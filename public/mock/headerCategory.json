@@ -1,0 +1,66 @@
+{
+  "data": [
+    {
+      "mainCategory": "ABOUTUS",
+      "tabs": [
+        {
+          "name": "브랜드 스토리",
+          "isSubcategory": false
+        },
+        {
+          "name": "오시는 길",
+          "isSubcategory": false
+        },
+        {
+          "name": "공지사항",
+          "isSubcategory": false
+        },
+        {
+          "name": "FAQ",
+          "isSubcategory": false
+        },
+        {
+          "name": "고객센터",
+          "isSubcategory": false
+        },
+        {
+          "name": "1:1문의",
+          "isSubcategory": true
+        },
+        {
+          "name": "Contact Us",
+          "isSubcategory": true
+        }
+      ]
+    },
+    {
+      "mainCategory": "ROOMS",
+      "tabs": [
+        {
+          "name": "슈페리어 더블",
+          "isSubcategory": false
+        },
+        {
+          "name": "슈페리어 트윈",
+          "isSubcategory": false
+        },
+        {
+          "name": "디럭스 트윈",
+          "isSubcategory": false
+        },
+        {
+          "name": "디럭스 트리플",
+          "isSubcategory": false
+        },
+        {
+          "name": "코너 스위트",
+          "isSubcategory": false
+        },
+        {
+          "name": "메이플레이스 스위트",
+          "isSubcategory": true
+        }
+      ]
+    }
+  ]
+}
