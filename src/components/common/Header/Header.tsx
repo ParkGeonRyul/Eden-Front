@@ -21,7 +21,7 @@ const Header = () => {
     const links = [
       { label: 'LOGIN', to: '/login' },
       { label: 'RESERVATION', to: '/reservation' },
-      { label: 'CONTACT', to: '/contact' },
+      { label: 'CONTACT', to: '/inquiry' },
     ];
     return links.map((link, index) => (
       <LinkButton label={link.label} to={link.to} key={index} />
