@@ -4,6 +4,7 @@ import LinkButton from '@/components/common/Button/LinkButton';
 import Hamburger from '@/assets/icons/hamburger.svg';
 import Close from '@/assets/icons/close.svg';
 import { Category } from '@/types/components/header';
+import { ComponentsType } from '@/types';
 
 const Header = () => {
   const [isHeaderOpen, setIsHeaderOpen] = useState<boolean>(false);
