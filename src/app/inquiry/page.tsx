@@ -1,11 +1,13 @@
+'use client';
+import PageTitle from '@/components/PageTitle/PageTitle';
 import * as S from './inquiry.style';
 
 export default function Inquiry() {
   return (
     <>
-      <S.GlobalStyle />
       <S.InquirySection>
-        <S.InquiryTitle>1:1 INQUIRY</S.InquiryTitle>
+        <PageTitle>1:1 INQUIRY</PageTitle>
+        {/* <S.InquiryTitle>1:1 INQUIRY</S.InquiryTitle> */}
         <S.InquirySubtitle>
           소중한 의견을 최대한 반영하여 더 나은 서비스로 보답하겠습니다.
         </S.InquirySubtitle>
