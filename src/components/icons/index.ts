@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import Check from '@/assets/icons/common/check.svg';
 import Facebook from '@/assets/icons/footer/iconFacebook.svg';
 import Twitter from '@/assets/icons/footer/iconTwitter.svg';
@@ -45,3 +46,12 @@ export {
   ArrowUp,
   HeaderClose,
 };
+=======
+import Check from '@/assets/icons/check.svg';
+import Facebook from '@/assets/icons/iconFacebook.svg';
+import Twitter from '@/assets/icons/iconTwitter.svg';
+import Instagram from '@/assets/icons/iconInstagram.svg';
+import Naver from '@/assets/icons/iconNaver.svg';
+
+export { Check, Facebook, Twitter, Instagram, Naver };
+>>>>>>> 947c262 (✨ feat     : Footer Components 완료)
