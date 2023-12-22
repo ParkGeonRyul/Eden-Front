@@ -10,6 +10,7 @@ import {
 import { GlobalStyle } from './global';
 import { theme } from './theme';
 import Header from '@/components/common/Header/Header';
+import Footer from '@/components/common/Footer/Footer';
 
 export default function StyledComponentsRegistry({
   children,
@@ -30,6 +31,7 @@ export default function StyledComponentsRegistry({
         <Header />
         <GlobalStyle />
         {children}
+        <Footer />
       </ThemeProvider>
     );
 
@@ -39,6 +41,7 @@ export default function StyledComponentsRegistry({
         <Header />
         <GlobalStyle />
         {children}
+        <Footer />
       </StyleSheetManager>
     </ThemeProvider>
   );

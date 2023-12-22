@@ -1,8 +1,8 @@
-import { ReactElement } from 'react';
+import { ReactElement, ReactNode } from 'react';
 import * as S from './style';
 
 interface Props {
-  label: string;
+  label: string | ReactNode;
   to: string;
 }
 
