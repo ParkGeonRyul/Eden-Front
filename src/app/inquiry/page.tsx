@@ -3,7 +3,6 @@ import * as S from './inquiry.style';
 export default function Inquiry() {
   return (
     <>
-      <S.GlobalStyle />
       <S.InquirySection>
         <S.InquiryTitle>1:1 INQUIRY</S.InquiryTitle>
         <S.InquirySubtitle>
