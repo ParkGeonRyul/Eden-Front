@@ -80,8 +80,13 @@ export default function Inquiry() {
 
   return (
     <>
+<<<<<<< HEAD
       <Mainpage>
         <PageTitle>1:1 INQUIRY</PageTitle>
+=======
+      <S.InquirySection>
+        <S.InquiryTitle>1:1 INQUIRY</S.InquiryTitle>
+>>>>>>> 947c262 (✨ feat     : Footer Components 완료)
         <S.InquirySubtitle>
           소중한 의견을 최대한 반영하여 더 나은 서비스로 보답하겠습니다.
         </S.InquirySubtitle>
