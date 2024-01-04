@@ -1,9 +1,9 @@
 'use client';
 import styled from 'styled-components';
 
-// export const Inquiry = styled.div`
-//   color: ${({ theme }) => theme.colorTheme.sub};
-// `;
+export const Inquiry = styled.div`
+  color: ${({ theme }) => theme.colorTheme.sub};
+`;
 
 export const InquirySection = styled.div`
   padding: 0 200px;
@@ -153,17 +153,14 @@ export const PersonalInfo = styled.div`
   justify-content: center;
 `;
 
-export const InputCheck = styled.label`
+export const CheckBoxDisplay = styled.div`
   display: flex;
-  height: 21px;
-  justify-content: center;
-  gap: 16px;
   align-items: center;
-  margin-left: 135px;
 `;
 
 export const ViewContent = styled.span`
   text-decoration: underline;
+  margin-left: 15px;
 `;
 
 export const Button = styled.div`

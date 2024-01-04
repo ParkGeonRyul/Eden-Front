@@ -1,5 +1,6 @@
 'use client';
 import PageTitle from '@/components/PageTitle/PageTitle';
+import CheckBox from '@/components/CheckBox/CheckBox';
 import * as S from './inquiry.style';
 
 export default function Inquiry() {
@@ -67,13 +68,13 @@ export default function Inquiry() {
           </S.InquiryForm>
           <S.Privacy>
             <S.PersonalInfo>개인정보 수집 동의</S.PersonalInfo>
-            <div>
-              <S.InputCheck>
-                <input type="checkbox" />
-                개인정보 수집항목 및 이용 동의 (필수)
-                <S.ViewContent>내용보기</S.ViewContent>
-              </S.InputCheck>
-            </div>
+
+            <S.CheckBoxDisplay>
+              <CheckBox position="left">
+                개인정보 수집항목 및 이용동의 (필수)
+              </CheckBox>
+              <S.ViewContent>내용보기</S.ViewContent>
+            </S.CheckBoxDisplay>
           </S.Privacy>
           <S.Button>
             <S.InquiryButton>문의하기</S.InquiryButton>
