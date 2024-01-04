@@ -47,6 +47,8 @@ export const InquiryForm = styled.div`
   border-bottom: solid 1px #4b4b4b;
   justify-content: flex-start;
   margin-bottom: 31px;
+  flex-direction: column;
+  gap: 16px;
 `;
 
 export const InquiryInformation = styled.div`
@@ -74,22 +76,23 @@ export const InquiryInfoTitle = styled.div`
   width: 110px;
 `;
 
-export const TypeChoice = styled.select`
-  width: 270px;
-  height: 52px;
-  padding: 15.5px 9px;
-  appearance: none;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  width="18px" height="18px"><path d="M7 10l5 5 5-5z" /></svg>');
-  background-position: right 10px top 50%;
-  padding-right: 27px;
-  border: 1px solid #cdcdcd;
-`;
+// export const TypeChoice = styled.select`
+//   width: 270px;
+//   height: 52px;
+//   padding: 15.5px 9px;
+//   appearance: none;
+//   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  width="18px" height="18px"><path d="M7 10l5 5 5-5z" /></svg>');
+//   background-position: right 10px top 50%;
+//   padding-right: 27px;
+//   border: 1px solid #cdcdcd;
+// `;
 
 export const InputTitle = styled.input`
   width: 770px;
   height: 52px;
   padding: 15.5px 9px;
   border: 1px solid #cdcdcd;
+  outline: none;
 `;
 
 export const InputContent = styled.textarea`
@@ -99,6 +102,7 @@ export const InputContent = styled.textarea`
   padding: 15.5px 9px;
   margin-bottom: 16px;
   border: 1px solid #cdcdcd;
+  outline: none;
 `;
 
 export const InputLetters = styled.div`
@@ -111,6 +115,7 @@ export const InputName = styled.input`
   height: 52px;
   padding: 15.5px 9px;
   border: 1px solid #cdcdcd;
+  outline: none;
 `;
 
 export const InputEmail = styled.input`
@@ -118,13 +123,15 @@ export const InputEmail = styled.input`
   height: 52px;
   padding: 15.5px 9px;
   border: 1px solid #cdcdcd;
+  margin-right: 16px;
+  outline: none;
 `;
 
 export const At = styled.span`
   font-size: 17px;
   display: flex;
   align-items: center;
-  margin: 16px;
+  margin-right: 16px;
 `;
 
 export const EmailChoice = styled.select`
@@ -137,6 +144,7 @@ export const EmailChoice = styled.select`
   background-position: right 10px top 50%;
   padding-right: 27px;
   border: 1px solid #cdcdcd;
+  outline: none;
 `;
 
 export const Privacy = styled.div`

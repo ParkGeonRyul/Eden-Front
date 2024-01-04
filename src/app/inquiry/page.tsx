@@ -1,6 +1,7 @@
 'use client';
 import PageTitle from '@/components/PageTitle/PageTitle';
 import * as S from './inquiry.style';
+import DropDown from '@/components/DropDown/DropDown';
 
 export default function Inquiry() {
   return (
@@ -17,53 +18,51 @@ export default function Inquiry() {
           </S.InquiryEssential>
           <S.InquiryForm>
             <S.InquiryInformation>문의정보</S.InquiryInformation>
-            <S.InquiryType>
-              <S.InquiryDisplay>
-                <S.InquiryInfoTitle id="type">문의유형</S.InquiryInfoTitle>
-                <div>
-                  <S.TypeChoice id="type">
-                    <option value="1">문의유형선택</option>
-                    <option value="2">PET</option>
-                    <option value="3">CHILD</option>
-                    <option value="4">SPORTS</option>
-                    <option value="5">FAMILY</option>
-                    <option value="6">기타</option>
-                  </S.TypeChoice>
-                </div>
-              </S.InquiryDisplay>
-              <S.InquiryDisplay>
-                <S.InquiryInfoTitle>제목</S.InquiryInfoTitle>
-                <S.InputTitle placeholder="문의 제목 입력" />
-              </S.InquiryDisplay>
+            <DropDown
+              label="문의유형"
+              options={[
+                { value: '1', label: 'PET' },
+                { value: '2', label: 'CHILD' },
+                { value: '3', label: 'SPORTS' },
+                { value: '4', label: 'FAMILY' },
+                { value: '5', label: '기타' },
+              ]}
+              placeholder="문의유형선택"
+              id="type"
+            />
+            <S.InquiryDisplay>
+              <S.InquiryInfoTitle>제목</S.InquiryInfoTitle>
+              <S.InputTitle placeholder="문의 제목 입력" />
+            </S.InquiryDisplay>
 
-              <S.InquiryDisplay>
-                <S.InquiryInfoTitle>내용</S.InquiryInfoTitle>
-                <div>
-                  <S.InputContent />
-                  <S.InputLetters>(0/2000bytes)</S.InputLetters>
-                </div>
-              </S.InquiryDisplay>
-              <S.InquiryDisplay>
-                <S.InquiryInfoTitle>이름</S.InquiryInfoTitle>
-                <S.InputName placeholder="이름입력" />
-              </S.InquiryDisplay>
-              <S.InquiryDisplay>
-                <S.InquiryInfoTitle>이메일</S.InquiryInfoTitle>
-                <S.InputEmail placeholder="이메일 입력" />
-                <S.At>@</S.At>
-                <S.InputEmail placeholder="이메일 주소 입력" />
-                <div>
-                  <S.EmailChoice id="type">
-                    <option value="1">직접입력</option>
-                    <option value="2">naver.com</option>
-                    <option value="3">hanmail.net</option>
-                    <option value="4">gmail.com</option>
-                    <option value="5">nate.com</option>
-                    <option value="6">hotmail.com</option>
-                  </S.EmailChoice>
-                </div>
-              </S.InquiryDisplay>
-            </S.InquiryType>
+            <S.InquiryDisplay>
+              <S.InquiryInfoTitle>내용</S.InquiryInfoTitle>
+              <div>
+                <S.InputContent />
+                <S.InputLetters>(0/2000bytes)</S.InputLetters>
+              </div>
+            </S.InquiryDisplay>
+            <S.InquiryDisplay>
+              <S.InquiryInfoTitle>이름</S.InquiryInfoTitle>
+              <S.InputName placeholder="이름입력" />
+            </S.InquiryDisplay>
+            <S.InquiryDisplay>
+              <S.InquiryInfoTitle>이메일</S.InquiryInfoTitle>
+              <S.InputEmail placeholder="이메일 입력" />
+              <S.At>@</S.At>
+              <S.InputEmail placeholder="이메일 주소 입력" />
+              <DropDown
+                label=""
+                options={[
+                  { value: '2', label: 'naver.com' },
+                  { value: '3', label: 'hanmail.net' },
+                  { value: '4', label: 'gmail.com' },
+                  { value: '5', label: 'nate.com' },
+                  { value: '6', label: 'hotmail.com' },
+                ]}
+                placeholder="직접입력"
+                id="email"></DropDown>
+            </S.InquiryDisplay>
           </S.InquiryForm>
           <S.Privacy>
             <S.PersonalInfo>개인정보 수집 동의</S.PersonalInfo>
