@@ -1,0 +1,16 @@
+<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="icoSearch.svg">
+<g id="Clip path group">
+<mask id="mask0_1121_1593" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="4" y="2" width="26" height="26">
+<g id="clip0_1724_18147">
+<path id="Vector" d="M30 2H4V28H30V2Z" fill="white"/>
+</g>
+</mask>
+<g mask="url(#mask0_1121_1593)">
+<g id="Group">
+<path id="Vector_2" d="M23.9574 21.9574L29.4557 27.4557M15.9141 25.2891C9.63182 25.2891 4.53906 20.1963 4.53906 13.9141C4.53906 7.63182 9.63182 2.53906 15.9141 2.53906C22.1963 2.53906 27.2891 7.63182 27.2891 13.9141C27.2891 20.1963 22.1963 25.2891 15.9141 25.2891Z" stroke="black" stroke-width="1.2"/>
+</g>
+</g>
+</g>
+</g>
+</svg>
