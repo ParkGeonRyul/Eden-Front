@@ -5,10 +5,6 @@ export const Inquiry = styled.div`
   color: ${({ theme }) => theme.colorTheme.sub};
 `;
 
-export const InquirySection = styled.div`
-  padding: 0 200px;
-`;
-
 export const InquiryTitle = styled.div`
   display: flex;
   height: 70px;
@@ -29,7 +25,7 @@ export const InquirySubtitle = styled.div`
 `;
 
 export const Section = styled.section`
-  width: 1081px;
+  width: 100%;
   height: 864px;
   margin: 0 auto;
 `;
@@ -38,6 +34,7 @@ export const InquiryEssential = styled.span`
   font-size: 14px;
   display: flex;
   flex-direction: row-reverse;
+  width: 100%;
 `;
 
 export const InquiryForm = styled.div`
@@ -53,6 +50,7 @@ export const InquiryForm = styled.div`
 
 export const InquiryInformation = styled.div`
   width: 200px;
+
   display: flex;
   font-size: 22.5px;
 `;
