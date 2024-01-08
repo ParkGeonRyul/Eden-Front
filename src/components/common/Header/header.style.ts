@@ -1,6 +1,7 @@
 ('use client');
 
-import styled, { css, keyframes } from 'styled-components';
+import styled from 'styled-components';
+import Link from 'next/link';
 
 export const Header = styled.header`
   position: relative;
@@ -12,6 +13,27 @@ export const Header = styled.header`
 export const ButtonBox = styled.div`
   display: flex;
   gap: 16px;
+`;
+
+export const CategoryLinkContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 390px;
+`;
+
+export const CategoryLinkBox = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+`;
+
+export const Category = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  cursor: pointer;
 `;
 
 export const CategoryBox = styled.div<{ height: string | number }>`
