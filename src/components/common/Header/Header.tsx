@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
-import * as S from './header.style';
 import LinkButton from '@/components/common/Button/LinkButton';
-import Hamburger from '@/assets/icons/hamburger.svg';
-import Close from '@/assets/icons/close.svg';
+import * as I from '@/components/icons';
 import { Category } from '@/types/components/header';
-
+import { ComponentsType } from '@/types';
+import * as S from './header.style';
 const Header = () => {
   const [isHeaderOpen, setIsHeaderOpen] = useState<boolean>(false);
   const [categories, setCategories] = useState<Category[]>([]);
@@ -12,9 +11,9 @@ const Header = () => {
 
   const renderIcon = () =>
     isHeaderOpen ? (
-      <Close onClick={toggleHeader} />
+      <I.Close onClick={toggleHeader} />
     ) : (
-      <Hamburger onClick={toggleHeader} />
+      <I.Hamburger onClick={toggleHeader} />
     );
 
   const renderLinkButtons = () => {
@@ -26,6 +25,31 @@ const Header = () => {
     return links.map((link, index) => (
       <LinkButton label={link.label} to={link.to} key={index} />
     ));
+  };
+
+  const categoryLinkButtons = () => {
+    const links = [
+      { label: 'HISTORY', to: '/', icon: <I.History /> },
+      { label: 'NOTICE', to: '/', icon: <I.History /> },
+      { label: 'PET', to: '/', icon: <I.Pet /> },
+      { label: 'CHILD', to: '/', icon: <I.Child /> },
+      { label: 'SPORTS', to: '/', icon: <I.Sports /> },
+      { label: 'FAMILY', to: '/', icon: <I.Family /> },
+    ];
+    return (
+      <S.CategoryLinkContainer>
+        <S.CategoryLinkBox>
+          {links.map((link) => {
+            return (
+              <S.Category key={link.label} href={link.to}>
+                {link.icon}
+                {link.label}
+              </S.Category>
+            );
+          })}
+        </S.CategoryLinkBox>
+      </S.CategoryLinkContainer>
+    );
   };
 
   useEffect(() => {
@@ -43,24 +67,7 @@ const Header = () => {
         <S.ButtonBox>{renderLinkButtons()}</S.ButtonBox>
       </S.Header>
       <S.CategoryBox height={isHeaderOpen ? '100vh' : 0}>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
+        {categoryLinkButtons()}
       </S.CategoryBox>
     </>
   );
