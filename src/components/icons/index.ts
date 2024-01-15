@@ -10,6 +10,7 @@ import Sports from '@/assets/icons/header/Sports.svg';
 import Family from '@/assets/icons/header/Family.svg';
 import Close from '@/assets/icons/Close.svg';
 import Hamburger from '@/assets/icons/Hamburger.svg';
+import SearchIcon from '@/assets/icons/icoSearch.svg';
 
 export {
   Check,
@@ -24,4 +25,5 @@ export {
   Family,
   Close,
   Hamburger,
+  SearchIcon,
 };
