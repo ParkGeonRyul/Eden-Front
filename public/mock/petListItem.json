@@ -1,0 +1,24 @@
+{
+  "data": [
+    {
+      "postId": 1,
+      "title": "pet01",
+      "date": "2020.10.10"
+    },
+    {
+      "postId": 2,
+      "title": "pet02",
+      "date": "2020.10.10"
+    },
+    {
+      "postId": 3,
+      "title": "pet03",
+      "date": "2020.10.10"
+    },
+    {
+      "postId": 4,
+      "title": "pet04",
+      "date": "2020.10.10"
+    }
+  ]
+}
