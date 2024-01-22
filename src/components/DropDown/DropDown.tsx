@@ -1,36 +1,25 @@
 import * as S from './dropDown.style';
-import { ReactNode } from 'react';
+import { ReactNode, ChangeEvent } from 'react';
 
-const DropDown = ({
-  label,
-  options,
-  placeholder,
-  id,
-  children,
-}: {
+interface DropDownProps {
   label?: string;
-  options: Array<{ value: string; label: string }>;
-  placeholder: string;
   id: string;
+  onChange: (selectedValue: string) => void;
   children?: ReactNode;
-}) => {
+}
+
+const DropDown = ({ label, id, onChange, children }: DropDownProps) => {
+  const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    const selectedValue = event.target.value;
+    onChange(selectedValue);
+  };
+
   return (
     <S.Display>
       {label && <S.InfoTitle>{label}</S.InfoTitle>}
       <div>
-        <S.TypeChoice id={id}>
-          {children ? (
-            children
-          ) : (
-            <>
-              <option value="1">{placeholder}</option>
-              {options.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </>
-          )}
+        <S.TypeChoice id={id} onChange={handleSelectChange}>
+          {children}
         </S.TypeChoice>
       </div>
     </S.Display>
