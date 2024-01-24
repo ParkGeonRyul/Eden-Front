@@ -4,6 +4,7 @@ import * as I from '@/components/icons';
 import { Category } from '@/types/components/header';
 import { ComponentsType } from '@/types';
 import * as S from './header.style';
+
 const Header = () => {
   const [isHeaderOpen, setIsHeaderOpen] = useState<boolean>(false);
   const [categories, setCategories] = useState<Category[]>([]);
