@@ -3,30 +3,41 @@
 import styled, { css } from 'styled-components';
 
 interface ButtonProps {
-  type: 'edit' | 'delete';
+  type: 'edit' | 'delete' | 'editComplete' | 'cancel';
   children: string;
 }
 
-const commonStyles = css`
+const editStyles = css`
+  color: #5d8554;
+`;
+
+const deleteStyles = css`
+  color: #ee5454;
+`;
+
+const editCompleteStyles = css`
+  color: #5d8554;
+`;
+
+const cancelStyles = css`
+  color: #6f6f6f;
+`;
+
+const typeMap = {
+  edit: editStyles,
+  delete: deleteStyles,
+  editComplete: editCompleteStyles,
+  cancel: cancelStyles,
+};
+
+export const StyledButton = styled.button<ButtonProps>`
   font-family: Inter;
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.28px;
-
   cursor: pointer;
-`;
 
-const editStyles = css`
-  color: #6f6f6f;
-`;
-
-const deleteStyles = css`
-  color: #de3636;
-`;
-
-export const StyledButton = styled.button<ButtonProps>`
-  ${commonStyles}
-  ${({ type }) => (type === 'edit' ? editStyles : deleteStyles)}
+  ${({ type }) => typeMap[type]}
 `;

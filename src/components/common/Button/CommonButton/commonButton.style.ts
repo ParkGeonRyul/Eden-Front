@@ -9,20 +9,6 @@ interface ButtonProps {
   children: string;
 }
 
-const commonStyles = css`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 173px;
-  padding: 19px 52px;
-
-  font-size: 18px;
-  font-weight: 500;
-
-  cursor: pointer;
-`;
-
 const basicStyles = css`
   width: 173px;
   padding: 19px 52px;
@@ -34,38 +20,46 @@ const wideStyles = css`
 `;
 
 const primaryStyles = css`
-  ${basicStyles}
   background-color: #e4d5c2;
   color: #000;
 `;
 
 const secondaryStyles = css`
-  ${basicStyles}
   border: 1px solid #000;
 `;
+
+const typeMap = {
+  primary: primaryStyles,
+  secondary: secondaryStyles,
+};
 
 const primaryInactiveStyles = css`
   color: #939393;
   background: #eee;
-  cursor: not-allowed;
 `;
 
 const secondaryInactiveStyles = css`
   border: 1px solid #d3d3d3;
   color: #b4b4b4;
   background: #fff;
+`;
+
+const inactiveStyles = ({ type }: ButtonProps) => css`
   cursor: not-allowed;
+
+  ${type === 'primary' ? primaryInactiveStyles : secondaryInactiveStyles}
 `;
 
 export const StyledButton = styled.button<ButtonProps>`
-  ${commonStyles}
-  ${({ type, isActive }) =>
-    type === 'primary'
-      ? isActive
-        ? primaryStyles
-        : primaryInactiveStyles
-      : isActive
-      ? secondaryStyles
-      : secondaryInactiveStyles}
-  ${({ wide }) => wide && wideStyles}
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  ${({ type }) => typeMap[type]}
+  ${({ wide }) => (wide ? wideStyles : basicStyles)}
+  ${({ isActive }) => !isActive && inactiveStyles}
 `;
