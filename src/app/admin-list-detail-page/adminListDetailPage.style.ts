@@ -1,5 +1,5 @@
 'use client';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const InquiryDetailContainer = styled.div`
   width: 100%;
@@ -86,17 +86,27 @@ export const AnswerWriteBox = styled.textarea`
   }
 `;
 
+const emptyButton = css`
+  background-color: #e4d5c2;
+  color: #000;
+  cursor: 'pointer';
+`;
+
+const notEmpty = css`
+  background-color: #eee;
+  color: #939393;
+  cursor: 'not-allowed';
+`;
+
 export const AnswerButton = styled.button<{ isEmpty?: boolean }>`
   width: 96px;
   height: 40px;
-  background: ${(props) => (props.isEmpty ? '#e4d5c2' : '#eee')};
-  color: ${(props) => (props.isEmpty ? '#000' : '#939393')};
-  cursor: ${(props) => (props.isEmpty ? 'pointer' : 'not-allowed')};
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 16px;
   font-weight: 400;
+  ${(props) => (props.isEmpty ? emptyButton : notEmpty)}
 `;
 
 export const ReviewHeader = styled.div`
@@ -107,7 +117,6 @@ export const ReviewHeader = styled.div`
 `;
 
 export const ReviewTitle = styled.div`
-  color: var(--Neutral-Dark-Darkest, #1f2024);
   font-size: 24px;
   font-weight: 600;
 `;
