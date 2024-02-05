@@ -1,10 +1,11 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { UserInfo } from '@/types/apis/userInfo';
 import CommonButton from '@/components/common/Button/CommonButton/CommonButton';
 import ProfileSection from '@/components/Mypage/Info/ProfileInfoSection/ProfileInfoSection';
 import BasicInfoSection from '@/components/Mypage/Info/BasicInfoSection/BasicInfoSection';
+import { addActiveToBasicInfoData } from '@/components/Mypage/Info/basicInfoConstants';
+import { UserInfo } from '@/types/apis/userInfo';
 import * as S from './edit.style';
 
 export default function Page() {
@@ -56,49 +57,7 @@ export default function Page() {
     }
   };
 
-  const basicInfoData: {
-    label: string;
-    value: string;
-    active: boolean;
-    field: keyof UserInfo;
-  }[] = [
-    {
-      label: '이름',
-      value: userInfo.userName,
-      active: false,
-      field: 'userName',
-    },
-    {
-      label: '아이디',
-      value: userInfo.userId,
-      active: true,
-      field: 'userId',
-    },
-    {
-      label: '이메일',
-      value: userInfo.userEmail,
-      active: true,
-      field: 'userEmail',
-    },
-    {
-      label: '주소',
-      value: userInfo.address,
-      active: true,
-      field: 'address',
-    },
-    {
-      label: '휴대폰번호',
-      value: userInfo.phoneNumber,
-      active: true,
-      field: 'phoneNumber',
-    },
-    {
-      label: '생년월일',
-      value: userInfo.birthDate,
-      active: true,
-      field: 'birthDate',
-    },
-  ];
+  const editBasicInfoData = addActiveToBasicInfoData(userInfo);
 
   return (
     <S.InfoContainer>
@@ -110,7 +69,7 @@ export default function Page() {
             userImage={userInfo.userImage}
             onProfileAreaClick={handleProfileAreaClick}></ProfileSection>
 
-          {basicInfoData.map((info) => (
+          {editBasicInfoData.map((info) => (
             <BasicInfoSection
               key={info.label}
               label={info.label}

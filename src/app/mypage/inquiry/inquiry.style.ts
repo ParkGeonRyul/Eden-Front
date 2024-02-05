@@ -15,10 +15,8 @@ export const InquiryContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: 120px;
-
   min-width: 907px;
   min-height: 364px;
-
   @media (max-width: 1500px) {
     margin-left: 280px;
   }
@@ -62,7 +60,6 @@ export const AnswerWriteBox = styled.div`
   white-space: pre-wrap;
   overflow-y: hidden;
   resize: none;
-
   color: #8c8c8c;
   font-size: 16px;
   font-weight: 400;

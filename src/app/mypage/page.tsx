@@ -4,6 +4,7 @@ import Link from 'next/link';
 import CommonButton from '@/components/common/Button/CommonButton/CommonButton';
 import ProfileSection from '@/components/Mypage/Info/ProfileInfoSection/ProfileInfoSection';
 import BasicInfoSection from '@/components/Mypage/Info/BasicInfoSection/BasicInfoSection';
+import { createBasicInfoData } from '@/components/Mypage/Info/basicInfoConstants';
 import { UserInfo } from '@/types/apis/userInfo';
 import * as S from './info.style';
 
@@ -29,42 +30,7 @@ export default function Page() {
     fetchUserInfo();
   }, []);
 
-  const basicInfoData: {
-    label: string;
-    value: string;
-    field: keyof UserInfo;
-  }[] = [
-    {
-      label: '이름',
-      value: userInfo.userName,
-      field: 'userName',
-    },
-    {
-      label: '아이디',
-      value: userInfo.userId,
-      field: 'userId',
-    },
-    {
-      label: '이메일',
-      value: userInfo.userEmail,
-      field: 'userEmail',
-    },
-    {
-      label: '주소',
-      value: userInfo.address,
-      field: 'address',
-    },
-    {
-      label: '휴대폰번호',
-      value: userInfo.phoneNumber,
-      field: 'phoneNumber',
-    },
-    {
-      label: '생년월일',
-      value: userInfo.birthDate,
-      field: 'birthDate',
-    },
-  ];
+  const basicInfoData = createBasicInfoData(userInfo);
 
   return (
     <S.InfoContainer>
