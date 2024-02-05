@@ -13,14 +13,12 @@ export const Section = styled.section`
   max-height: 864px;
   margin: 0 auto;
   margin-top: 64px;
-
   border-top: solid 1px #4b4b4b;
 `;
 
 export const ListCategory = styled.div`
   width: 100%;
   padding: 20px 70px 20px 50px;
-
   display: flex;
   justify-content: space-between;
 `;
@@ -41,10 +39,8 @@ export const ListItem = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 90px;
-
   padding: 30px 50px 30px 54px;
   border-top: solid 1px #e6e6e6;
-
   font-size: 17px;
   font-weight: 300;
 `;
