@@ -1,19 +1,18 @@
 'use client';
 import { useEffect, useState } from 'react';
 import PageTitle from '@/components/PageTitle/PageTitle';
-import Mainpage from '@/components/MainPage/MainPage';
 import SearchBar from '@/components/common/SearchBar/SearchBar';
 import PageButton from '@/components/ListPage/PageButton/PageButton';
 import { ListItem } from '@/types/apis/listItem';
 import * as S from './list.style';
 
-type Props = {
+interface ListPageProps {
   params: {
     slug: string;
   };
-};
+}
 
-export default function ListPage({ params }: Props) {
+export default function ListPage({ params }: ListPageProps) {
   const [listItems, setListItems] = useState<ListItem[]>([]);
 
   useEffect(() => {

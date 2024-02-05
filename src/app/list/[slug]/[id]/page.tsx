@@ -1,18 +1,17 @@
 'use client';
-import React from 'react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ListItem } from '@/types/apis/listItem';
 import PageTitle from '@/components/PageTitle/PageTitle';
 import * as S from './listDetail.style';
 
-type Props = {
+interface ListDetailPageProps {
   params: {
     slug: string;
     id: string;
   };
-};
+}
 
-export default function ListDetail({ params }: Props) {
+export default function ListDetail({ params }: ListDetailPageProps) {
   const [listItem, setListItem] = useState<ListItem>({
     postId: 0,
     title: '',
