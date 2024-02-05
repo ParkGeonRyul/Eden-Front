@@ -7,3 +7,5 @@ export interface UserInfo {
   birthDate: string;
   userImage: string;
 }
+
+export interface BasicInfoData extends Omit<UserInfo, 'userImage'> {}
