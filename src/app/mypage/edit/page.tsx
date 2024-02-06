@@ -4,11 +4,16 @@ import { useRouter } from 'next/navigation';
 import CommonButton from '@/components/common/Button/CommonButton/CommonButton';
 import ProfileSection from '@/components/Mypage/Info/ProfileInfoSection/ProfileInfoSection';
 import BasicInfoSection from '@/components/Mypage/Info/BasicInfoSection/BasicInfoSection';
+import EmailAuthModal from '@/components/common/Modal/EmailAuthModal/EmailAuthModal';
+import AddressModal from '@/components/common/Modal/AddressModal/AddressModal';
+import useModal from '@/components/common/Modal/usemodal';
 import { addActiveToBasicInfoData } from '@/components/Mypage/Info/basicInfoConstants';
 import { UserInfo } from '@/types/apis/userInfo';
 import * as S from './edit.style';
 
 export default function Page() {
+  const router = useRouter();
+  const { open, close, Modal } = useModal();
   const [userInfo, setUserInfo] = useState<UserInfo>({
     userName: '',
     userId: '',
@@ -19,9 +24,30 @@ export default function Page() {
     userImage: '',
   });
 
-  const router = useRouter();
+  const [selectedModal, setSelectedModal] = useState<
+    'email' | 'address' | null
+  >(null);
+
+  const openModal = (modalType: 'email' | 'address') => {
+    setSelectedModal(modalType);
+    open();
+  };
+
   const handleGoBack = () => {
     router.back();
+  };
+
+  const handleInfoFieldClick = (field: string) => {
+    if (field === 'userEmail') {
+      openModal('email');
+    } else if (field === 'address') {
+      openModal('address');
+    }
+  };
+
+  const closeModal = () => {
+    setSelectedModal(null);
+    close();
   };
 
   useEffect(() => {
@@ -35,8 +61,11 @@ export default function Page() {
     fetchUserInfo();
   }, []);
 
+  const editBasicInfoData = addActiveToBasicInfoData(userInfo);
+
   const handleInputChange = (field: keyof UserInfo, value: string) => {
     // TODO 유효성 검사 로직 필요
+
     setUserInfo((prevUserInfo) => ({
       ...prevUserInfo,
       [field]: value,
@@ -57,39 +86,72 @@ export default function Page() {
     }
   };
 
-  const editBasicInfoData = addActiveToBasicInfoData(userInfo);
+  const handleModalConfirm = (modalType: 'email' | 'address') => {
+    console.log(`${modalType} 인증이 확인되었습니다.`);
+    //TODO 각 모달에서 얻은 데이터 setter 함수로 업데이트
+    closeModal();
+  };
+
+  const renderModal = (selectedModal: string | null) => {
+    switch (selectedModal) {
+      case 'email':
+        return (
+          <EmailAuthModal
+            onClickClose={closeModal}
+            onClickConfirm={() => handleModalConfirm('email')}
+          />
+        );
+      case 'address':
+        return (
+          <AddressModal
+            onClickClose={closeModal}
+            onClickConfirm={() => handleModalConfirm('address')}
+          />
+        );
+      default:
+        return null;
+    }
+  };
 
   return (
-    <S.InfoContainer>
-      <S.InfoBox>
-        <S.InfoHead>기본 정보</S.InfoHead>
-        <S.InfoSectionWrapper>
-          <ProfileSection
-            label="프로필 사진"
-            userImage={userInfo.userImage}
-            onProfileAreaClick={handleProfileAreaClick}></ProfileSection>
+    <>
+      <S.InfoContainer>
+        <S.InfoBox>
+          <S.InfoHead>기본 정보</S.InfoHead>
+          <S.InfoSectionWrapper>
+            <ProfileSection
+              label="프로필 사진"
+              userImage={userInfo.userImage}
+              onProfileAreaClick={handleProfileAreaClick}></ProfileSection>
 
-          {editBasicInfoData.map((info) => (
-            <BasicInfoSection
-              key={info.label}
-              label={info.label}
-              value={info.value}
-              onChange={(value) =>
-                info.active && handleInputChange(info.field, value)
-              }
-              active={info.active}
-            />
-          ))}
-        </S.InfoSectionWrapper>
-      </S.InfoBox>
-      <S.ButtonBox>
-        <CommonButton type="primary" isActive onClick={handleUpdateButtonClick}>
-          수정완료
-        </CommonButton>
-        <CommonButton type="secondary" isActive onClick={handleGoBack}>
-          취소하기
-        </CommonButton>
-      </S.ButtonBox>
-    </S.InfoContainer>
+            {editBasicInfoData.map((info) => (
+              <BasicInfoSection
+                key={info.label}
+                label={info.label}
+                value={info.value}
+                onChange={(value) =>
+                  info.active && handleInputChange(info.field, value)
+                }
+                onClick={() => handleInfoFieldClick(info.field)}
+                active={info.active}
+              />
+            ))}
+          </S.InfoSectionWrapper>
+        </S.InfoBox>
+        <S.ButtonBox>
+          <CommonButton
+            type="primary"
+            isActive
+            onClick={handleUpdateButtonClick}>
+            수정완료
+          </CommonButton>
+          <CommonButton type="secondary" isActive onClick={handleGoBack}>
+            취소하기
+          </CommonButton>
+        </S.ButtonBox>
+      </S.InfoContainer>
+
+      <Modal>{renderModal(selectedModal)}</Modal>
+    </>
   );
 }
