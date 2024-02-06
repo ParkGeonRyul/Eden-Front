@@ -15,6 +15,7 @@ import Close from '@/assets/icons/Close.svg';
 import Hamburger from '@/assets/icons/Hamburger.svg';
 import SearchIcon from '@/assets/icons/icoSearch.svg';
 import Mail from '@/assets/icons/mail.svg';
+import ModalCloseButton from '@/assets/icons/modalCloseButton.svg';
 
 import Gokey from '@/assets/icons/goKey.svg';
 import MyInquiry from '@/assets/icons/myInquiry.svg';
@@ -39,4 +40,5 @@ export {
   Gokey,
   MyInquiry,
   Mail,
+  ModalCloseButton,
 };
