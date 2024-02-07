@@ -275,7 +275,7 @@ export default function Inquiry() {
           </S.InquiryButton>
 
           {isInquiry ? (
-            <Modal title="문의하기">
+            <Modal>
               <I.InquiryModal>
                 <I.CloseButton onClick={close}>X</I.CloseButton>
                 <I.ModalTitle>문의가 완료되었습니다.</I.ModalTitle>
@@ -290,7 +290,7 @@ export default function Inquiry() {
               </I.InquiryModal>
             </Modal>
           ) : (
-            <Modal title="조회하기">
+            <Modal>
               <M.SearchModal>
                 <M.CloseButton onClick={close}>X</M.CloseButton>
 
@@ -317,6 +317,9 @@ export default function Inquiry() {
           )}
         </S.InquiryBox>
       </Mainpage>
+      <Link href="/inquiry/edit">
+        <button>수정</button>
+      </Link>
     </>
   );
 }
