@@ -1,0 +1,15 @@
+{
+  "inquiryMockData": [
+    {
+      "selectedType": "3",
+      "title": "제목 예시",
+      "content": "문의 내용 예시",
+
+      "name": "모래",
+      "emailId": "sand",
+      "emailAddress": "test.com",
+      "emailDomain": "naver.com",
+      "isCheckboxChecked": true
+    }
+  ]
+}
