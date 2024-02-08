@@ -1,4 +1,3 @@
-'use client';
 import styled from 'styled-components';
 
 export const ListSubtitle = styled.div`
@@ -51,6 +50,14 @@ export const ListItemId = styled.div`
 
 export const ListItemTitle = styled.div`
   width: 800px;
+  pointer: cursor;
 `;
 
 export const ListItemDate = styled.div``;
+
+export const ButtonContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 72px;
+`;
