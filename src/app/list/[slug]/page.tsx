@@ -1,7 +1,10 @@
 'use client';
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import PageTitle from '@/components/common/PageTitle/PageTitle';
 import SearchBar from '@/components/common/SearchBar/SearchBar';
+import CommonButton from '@/components/common/Button/CommonButton/CommonButton';
 import PageButton from '@/components/ListPage/PageButton/PageButton';
 import { ListItem } from '@/types/apis/listItem';
 import * as S from './list.style';
@@ -13,7 +16,11 @@ interface ListPageProps {
 }
 
 export default function ListPage({ params }: ListPageProps) {
+  const router = useRouter();
+  const [isAdmin, setIsAdmiin] = useState(false);
   const [listItems, setListItems] = useState<ListItem[]>([]);
+
+  const postId = params.slug;
 
   useEffect(() => {
     //TODO api 분리 후 slug에 따라 다이나믹 통신하기!
@@ -27,10 +34,16 @@ export default function ListPage({ params }: ListPageProps) {
     return listItems.map((item, index) => (
       <S.ListItem key={index}>
         <S.ListItemId>{item.postId}</S.ListItemId>
-        <S.ListItemTitle>{item.title}</S.ListItemTitle>
+        <Link href={`/list/${params.slug}/${item.postId}`}>
+          <S.ListItemTitle>{item.title}</S.ListItemTitle>
+        </Link>
         <S.ListItemDate>{item.date}</S.ListItemDate>
       </S.ListItem>
     ));
+  };
+
+  const goNewPostPage = () => {
+    router.push(`/list/${params.slug}/new`);
   };
 
   return (
@@ -47,6 +60,14 @@ export default function ListPage({ params }: ListPageProps) {
         {renderingListItems()}
       </S.Section>
       <PageButton></PageButton>
+
+      {isAdmin && (
+        <S.ButtonContainer>
+          <CommonButton type="primary" onClick={goNewPostPage}>
+            글 작성
+          </CommonButton>
+        </S.ButtonContainer>
+      )}
     </>
   );
 }

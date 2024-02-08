@@ -1,7 +1,9 @@
 export interface ListItem {
   postId: number;
   title: string;
-  content: string;
   date: string;
-  //image 관련 키 필요
+}
+
+export interface ListItemDetail extends Omit<ListItem, 'postId'> {
+  content: string;
 }

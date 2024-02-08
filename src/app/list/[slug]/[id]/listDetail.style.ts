@@ -1,4 +1,3 @@
-'use client';
 import styled from 'styled-components';
 
 export const InquiryDetailContainer = styled.div`
@@ -38,4 +37,10 @@ export const InquiryBody = styled.div`
   font-size: 16px;
   line-height: 32px;
   margin-bottom: 67px;
+`;
+
+export const ButtonBox = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
 `;
