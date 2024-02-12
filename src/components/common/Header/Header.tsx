@@ -31,11 +31,13 @@ const Header = () => {
   const categoryLinkButtons = () => {
     const links = [
       { label: 'HISTORY', to: '/', icon: <I.History /> },
-      { label: 'NOTICE', to: '/', icon: <I.History /> },
-      { label: 'PET', to: '/', icon: <I.Pet /> },
-      { label: 'CHILD', to: '/', icon: <I.Child /> },
-      { label: 'SPORTS', to: '/', icon: <I.Sports /> },
+      { label: 'NOTICE', to: '/', icon: <I.Notice /> },
       { label: 'FAMILY', to: '/', icon: <I.Family /> },
+      { label: 'CHILD', to: '/', icon: <I.Child /> },
+      { label: 'ACADEMICS', to: '/', icon: <I.Academics /> },
+      { label: 'SPORTS', to: '/', icon: <I.Sports /> },
+      { label: 'PET', to: '/', icon: <I.Pet /> },
+      { label: 'E-books', to: '/', icon: <I.Ebooks /> },
     ];
     return (
       <S.CategoryLinkContainer>
