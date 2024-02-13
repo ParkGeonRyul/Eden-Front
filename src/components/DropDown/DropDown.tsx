@@ -6,9 +6,10 @@ interface DropDownProps {
   id: string;
   onChange: (selectedValue: string) => void;
   children?: ReactNode;
+  value?: string;
 }
 
-const DropDown = ({ label, id, onChange, children }: DropDownProps) => {
+const DropDown = ({ label, id, onChange, children, value }: DropDownProps) => {
   const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const selectedValue = event.target.value;
     onChange(selectedValue);
@@ -18,7 +19,7 @@ const DropDown = ({ label, id, onChange, children }: DropDownProps) => {
     <S.Display>
       {label && <S.InfoTitle>{label}</S.InfoTitle>}
       <div>
-        <S.TypeChoice id={id} onChange={handleSelectChange}>
+        <S.TypeChoice id={id} value={value} onChange={handleSelectChange}>
           {children}
         </S.TypeChoice>
       </div>
