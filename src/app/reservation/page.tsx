@@ -1,7 +1,7 @@
 'use client';
-import PageTitle from '@/components/PageTitle/PageTitle';
-import Mainpage from '@/components/MainPage/MainPage';
-import CheckBox from '@/components/CheckBox/CheckBox';
+import PageTitle from '@/components/common/PageTitle/PageTitle';
+import Mainpage from '@/components/common/MainPage/MainPage';
+import CheckBox from '@/components/common/CheckBox/CheckBox';
 import CommonButton from '@/components/common/Button/CommonButton/CommonButton';
 import * as S from './reservation.style';
 

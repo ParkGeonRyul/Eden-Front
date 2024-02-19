@@ -1,8 +1,8 @@
 'use client';
 import React, { useState } from 'react';
 import * as S from './post.style';
-import Mainpage from '@/components/MainPage/MainPage';
-import PageTitle from '@/components/PageTitle/PageTitle';
+import Mainpage from '@/components/common/MainPage/MainPage';
+import PageTitle from '@/components/common/PageTitle/PageTitle';
 import ControlButton from '@/components/common/Button/ControlButton/ControlButton';
 import Label from '@/components/common/Label/AnswerStatusLabel/AnswerStatusLabel';
 

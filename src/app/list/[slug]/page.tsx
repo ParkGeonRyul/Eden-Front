@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import PageTitle from '@/components/PageTitle/PageTitle';
+import PageTitle from '@/components/common/PageTitle/PageTitle';
 import SearchBar from '@/components/common/SearchBar/SearchBar';
 import PageButton from '@/components/ListPage/PageButton/PageButton';
 import { ListItem } from '@/types/apis/listItem';
