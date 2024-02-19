@@ -1,8 +1,8 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import * as S from './admin.style';
-import Mainpage from '@/components/MainPage/MainPage';
-import PageTitle from '@/components/PageTitle/PageTitle';
+import Mainpage from '@/components/common/MainPage/MainPage';
+import PageTitle from '@/components/common/PageTitle/PageTitle';
 import Label from '@/components/common/Label/AnswerStatusLabel/AnswerStatusLabel';
 import Link from 'next/link';
 

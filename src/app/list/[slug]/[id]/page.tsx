@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { ListItem } from '@/types/apis/listItem';
-import PageTitle from '@/components/PageTitle/PageTitle';
+import PageTitle from '@/components/common/PageTitle/PageTitle';
 import * as S from './listDetail.style';
 
 interface ListDetailPageProps {

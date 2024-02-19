@@ -1,6 +1,6 @@
 'use client';
 import type { Metadata } from 'next';
-import Mainpage from '@/components/MainPage/MainPage';
+import Mainpage from '@/components/common/MainPage/MainPage';
 
 interface Props {
   children: React.ReactNode;

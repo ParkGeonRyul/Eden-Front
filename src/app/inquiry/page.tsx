@@ -1,16 +1,16 @@
 'use client';
 import { useState } from 'react';
-import PageTitle from '@/components/PageTitle/PageTitle';
-import CheckBox from '@/components/CheckBox/CheckBox';
-import Mainpage from '@/components/MainPage/MainPage';
-import DropDown from '@/components/DropDown/DropDown';
+import PageTitle from '@/components/common/PageTitle/PageTitle';
+import CheckBox from '@/components/common/CheckBox/CheckBox';
+import Mainpage from '@/components/common/MainPage/MainPage';
+import DropDown from '@/components/common/DropDown/DropDown';
 import CommonButton from '@/components/common/Button/CommonButton/CommonButton';
-import useModal from '@/components/common/Modal/usemodal';
-import * as I from './inquiryModal.style';
-import * as M from './searchModal.style';
+import useModal from '@/hooks/useModal/usemodal';
+import * as IM from '../../components/Modal/InquiryModal/inquiryModal.style';
+import * as SM from '../../components/Modal/InquiryModal/searchModal.style';
 import * as S from './inquiry.style';
 import Link from 'next/link';
-import Mail from '@/assets/icons/mail.svg';
+import * as I from '@/components/icons/index';
 
 export default function Inquiry() {
   const { Modal, open, close } = useModal();
@@ -276,32 +276,32 @@ export default function Inquiry() {
 
           {isInquiry ? (
             <Modal>
-              <I.InquiryModal>
-                <I.CloseButton onClick={close}>X</I.CloseButton>
-                <I.ModalTitle>문의가 완료되었습니다.</I.ModalTitle>
-                <I.ModalContent>
+              <IM.InquiryModal>
+                <IM.CloseButton onClick={close}>X</IM.CloseButton>
+                <IM.ModalTitle>문의가 완료되었습니다.</IM.ModalTitle>
+                <IM.ModalContent>
                   {
                     '문의가 입력하신 이메일(sample@naver.com)로 안내 메일을 보냈습니다.\n코드번호로 작성하신 문의를 확인할 수 있습니다.'
                   }
-                  <I.SvgContainer>
-                    <Mail />
-                  </I.SvgContainer>
-                </I.ModalContent>
-              </I.InquiryModal>
+                  <IM.SvgContainer>
+                    <I.Mail />
+                  </IM.SvgContainer>
+                </IM.ModalContent>
+              </IM.InquiryModal>
             </Modal>
           ) : (
             <Modal>
-              <M.SearchModal>
-                <M.CloseButton onClick={close}>X</M.CloseButton>
+              <SM.SearchModal>
+                <SM.CloseButton onClick={close}>X</SM.CloseButton>
 
-                <M.ModalBody>
-                  <M.ModalTitle>조회하기</M.ModalTitle>
-                  <M.InputTitle>이름</M.InputTitle>
-                  <M.ModalInput placeholder="이름" />
-                  <M.InputTitle>이메일</M.InputTitle>
-                  <M.ModalInput placeholder="이메일" />
-                  <M.InputTitle>문의번호</M.InputTitle>
-                  <M.ModalInput placeholder="문의번호" />
+                <SM.ModalBody>
+                  <SM.ModalTitle>조회하기</SM.ModalTitle>
+                  <SM.InputTitle>이름</SM.InputTitle>
+                  <SM.ModalInput placeholder="이름" />
+                  <SM.InputTitle>이메일</SM.InputTitle>
+                  <SM.ModalInput placeholder="이메일" />
+                  <SM.InputTitle>문의번호</SM.InputTitle>
+                  <SM.ModalInput placeholder="문의번호" />
                   <Link href="/inquiry/post">
                     <CommonButton
                       wide={true}
@@ -311,8 +311,8 @@ export default function Inquiry() {
                       조회하기
                     </CommonButton>
                   </Link>
-                </M.ModalBody>
-              </M.SearchModal>
+                </SM.ModalBody>
+              </SM.SearchModal>
             </Modal>
           )}
         </S.InquiryBox>
