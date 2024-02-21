@@ -1,24 +1,28 @@
 {
-  "data": [
-    {
-      "postId": 1,
-      "title": "pet01",
-      "date": "2020.10.10"
-    },
-    {
-      "postId": 2,
-      "title": "pet02",
-      "date": "2020.10.10"
-    },
-    {
-      "postId": 3,
-      "title": "pet03",
-      "date": "2020.10.10"
-    },
-    {
-      "postId": 4,
-      "title": "pet04",
-      "date": "2020.10.10"
-    }
-  ]
+  "data": {
+    "totalCount": 4,
+    "totalPage": 1,
+    "list": [
+      {
+        "title": "title2",
+        "createdAt": "24.02.27",
+        "postId": 14
+      },
+      {
+        "title": "title2",
+        "createdAt": "24.02.27",
+        "postId": 13
+      },
+      {
+        "title": "title2",
+        "createdAt": "24.02.27",
+        "postId": 12
+      },
+      {
+        "title": "modified title1",
+        "createdAt": "24.02.27",
+        "postId": 11
+      }
+    ]
+  }
 }

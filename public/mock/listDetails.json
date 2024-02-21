@@ -1,0 +1,18 @@
+{
+  "data": {
+    "title": "pet01",
+    "content": "안녕하세요, Eden 입니다. ~~~~",
+    "uploadFile": [
+      {
+        "fileUrl": "https://i.imgur.com/qo9kpu7.png"
+      }
+    ],
+    "isSign": true,
+    "language": 1,
+    "view": 123,
+    "category": 1,
+    "createdAt": "24.12.12",
+    "updateddAt": "24.12.12",
+    "postId": 3
+  }
+}

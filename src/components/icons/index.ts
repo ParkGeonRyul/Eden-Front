@@ -20,6 +20,8 @@ import Gokey from '@/assets/icons/mypage/goKey.svg';
 import MyInquiry from '@/assets/icons/mypage/myInquiry.svg';
 import ArrowUp from '@/assets/icons/viewCount/arrowUp.svg';
 import HeaderClose from '@/assets/icons/header/headerclose.svg';
+import ArrowLeft from '@/assets/icons/pagination/arrowLeft.svg';
+import ArrowRight from '@/assets/icons/pagination/arrowRight.svg';
 
 export {
   Check,
@@ -44,4 +46,6 @@ export {
   ModalCloseButton,
   ArrowUp,
   HeaderClose,
+  ArrowLeft,
+  ArrowRight,
 };
