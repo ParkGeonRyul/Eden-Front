@@ -5,79 +5,31 @@ import CheckBox from '@/components/common/CheckBox/CheckBox';
 import Mainpage from '@/components/common/MainPage/MainPage';
 import DropDown from '@/components/common/DropDown/DropDown';
 import CommonButton from '@/components/common/Button/CommonButton/CommonButton';
+import InquiryModal from '@/components/Modal/InquiryModal/InquiryModal';
+import SearchModal from '@/components/Modal/SearchModal/SearchModal';
 import useModal from '@/hooks/useModal/usemodal';
-import * as IM from '../../components/Modal/InquiryModal/inquiryModal.style';
-import * as SM from '../../components/Modal/InquiryModal/searchModal.style';
 import * as S from './inquiry.style';
-import Link from 'next/link';
-import * as I from '@/components/icons/index';
+
+import {
+  validateInquiryData,
+  isContentLengthValid,
+} from '@/utils/inquiry/validateInquiryData';
 
 export default function Inquiry() {
   const { Modal, open, close } = useModal();
+
   const [isInquiry, setIsInquiry] = useState(false);
   const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
 
   const [formData, setFormData] = useState({
-    selectedType: '0',
+    selectedType: '',
     title: '',
     content: '',
     name: '',
     emailId: '',
-    emailAddress: '',
     emailDomain: '',
+    isCustomDomain: true,
   });
-
-  const isContentLengthValid = (value: string) => value.length <= 2000;
-
-  const updateFormData = (fieldName: string, value: string) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      [fieldName]: value,
-    }));
-  };
-
-  interface InquiryData {
-    selectedType: string;
-    title: string;
-    content: string;
-    emailId: string;
-    emailAddress: string;
-    emailDomain: string;
-    isCheckboxChecked: boolean;
-  }
-
-  const TYPE_RANGE = {
-    MIN: 1,
-    MAX: 5,
-  };
-
-  // 유효성 검사 함수
-  const validateInquiryData = ({
-    selectedType,
-    title,
-    content,
-    emailId,
-    emailAddress,
-    emailDomain,
-    isCheckboxChecked,
-  }: InquiryData) => {
-    const isTypeValid =
-      parseInt(selectedType, 10) >= TYPE_RANGE.MIN &&
-      parseInt(selectedType, 10) <= TYPE_RANGE.MAX;
-    const isTitleValid = title.trim() !== '';
-    const isContentValid = content.trim() !== '';
-    const isEmailIdValid = emailId.trim() !== '';
-    const isEmailValid =
-      emailAddress.trim() !== '' || emailDomain.trim() !== '';
-    return (
-      isTypeValid &&
-      isTitleValid &&
-      isContentValid &&
-      isEmailIdValid &&
-      isEmailValid &&
-      isCheckboxChecked
-    );
-  };
 
   const handleButtonClick = (buttonType: 'inquiry' | 'search') => {
     // 조회하기 버튼을 눌렀을 때의 로직
@@ -92,7 +44,6 @@ export default function Inquiry() {
         setIsInquiry(true);
         open();
       } else {
-        // 필수 항목 누락 시 알림
         alert(
           '문의유형과 제목, 내용, 이메일 아이디, 이메일을 모두 입력해주세요.',
         );
@@ -102,36 +53,24 @@ export default function Inquiry() {
 
   const handleInputChange = (fieldName: string, value: string) => {
     console.log(`${fieldName}: ${value}`);
+    if (fieldName === 'content' && !isContentLengthValid(value)) {
+      alert('내용은 2000자를 초과할 수 없습니다.');
+      return;
+    }
 
-    switch (fieldName) {
-      case 'type':
-        updateFormData('selectedType', value);
-        break;
-      case 'title':
-        updateFormData('title', value);
-        break;
-      case 'content':
-        if (isContentLengthValid(value)) {
-          updateFormData('content', value);
-        } else {
-          alert('글자 수는 2000자를 초과할 수 없습니다.');
-        }
-        break;
-      case 'name':
-        updateFormData('name', value);
-        break;
-      case 'emailId':
-        updateFormData('emailId', value);
-        break;
-      case 'emailAddress':
-        updateFormData('emailAddress', value);
-        break;
-      case 'emailDomain':
-        updateFormData('emailDomain', value);
-        updateFormData('emailAddress', value);
-        break;
-      default:
-        break;
+    // 드롭다운에서 'emailDomain'이 선택되었는지 확인 및 'isCustomDomain' 상태 업데이트
+    if (fieldName === 'emailDomain') {
+      const isCustom = value === '';
+      setFormData((prevData) => ({
+        ...prevData,
+        [fieldName]: value,
+        isCustomDomain: isCustom,
+      }));
+    } else {
+      setFormData((prevData) => ({
+        ...prevData,
+        [fieldName]: value,
+      }));
     }
   };
 
@@ -162,8 +101,8 @@ export default function Inquiry() {
                 <DropDown
                   label=""
                   id="type"
-                  onChange={(selectedValue) =>
-                    handleInputChange('type', selectedValue)
+                  onChange={(selectedType) =>
+                    handleInputChange('selectedType', selectedType)
                   }>
                   <option value="">유형 선택</option>
                   <option value="1">PET</option>
@@ -228,9 +167,9 @@ export default function Inquiry() {
                   <S.InputEmail
                     placeholder="이메일 주소 입력"
                     onChange={(e) =>
-                      handleInputChange('emailAddress', e.target.value)
+                      handleInputChange('emailDomain', e.target.value)
                     }
-                    value={formData.emailAddress}
+                    value={formData.emailDomain}
                   />
                   <DropDown
                     label=""
@@ -266,6 +205,7 @@ export default function Inquiry() {
               onClick={() => handleButtonClick('inquiry')}>
               문의하기
             </CommonButton>
+
             <CommonButton
               type="secondary"
               isActive={true}
@@ -276,50 +216,15 @@ export default function Inquiry() {
 
           {isInquiry ? (
             <Modal>
-              <IM.InquiryModal>
-                <IM.CloseButton onClick={close}>X</IM.CloseButton>
-                <IM.ModalTitle>문의가 완료되었습니다.</IM.ModalTitle>
-                <IM.ModalContent>
-                  {
-                    '문의가 입력하신 이메일(sample@naver.com)로 안내 메일을 보냈습니다.\n코드번호로 작성하신 문의를 확인할 수 있습니다.'
-                  }
-                  <IM.SvgContainer>
-                    <I.Mail />
-                  </IM.SvgContainer>
-                </IM.ModalContent>
-              </IM.InquiryModal>
+              <InquiryModal close={close} />
             </Modal>
           ) : (
             <Modal>
-              <SM.SearchModal>
-                <SM.CloseButton onClick={close}>X</SM.CloseButton>
-
-                <SM.ModalBody>
-                  <SM.ModalTitle>조회하기</SM.ModalTitle>
-                  <SM.InputTitle>이름</SM.InputTitle>
-                  <SM.ModalInput placeholder="이름" />
-                  <SM.InputTitle>이메일</SM.InputTitle>
-                  <SM.ModalInput placeholder="이메일" />
-                  <SM.InputTitle>문의번호</SM.InputTitle>
-                  <SM.ModalInput placeholder="문의번호" />
-                  <Link href="/inquiry/post">
-                    <CommonButton
-                      wide={true}
-                      type="primary"
-                      isActive={true}
-                      onClick={open}>
-                      조회하기
-                    </CommonButton>
-                  </Link>
-                </SM.ModalBody>
-              </SM.SearchModal>
+              <SearchModal close={close} />
             </Modal>
           )}
         </S.InquiryBox>
       </Mainpage>
-      <Link href="/inquiry/edit">
-        <button>수정</button>
-      </Link>
     </>
   );
 }
