@@ -4,7 +4,7 @@ import { ListItemDetail } from '@/types/apis/listItem';
 
 const getFormData = async () => {
   //TODO react-query로 변경 및 api 분리
-  const formData = await fetch('http://localhost:3000/mock/postData.json');
+  const formData = await fetch('http://localhost:3000/mock/listDetail.json');
   const result = await formData.json();
   return result.data;
 };

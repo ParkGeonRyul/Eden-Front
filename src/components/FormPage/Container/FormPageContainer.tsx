@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import FormPage from '@/components/FormPage/UI/FormPage';
-import { ListItemDetail } from '@/types/apis/listItem';
+import { ListItemDetail, UploadFileData } from '@/types/apis/listItem';
 import { ListProps } from '@/interfaces/listPage';
 import { FormType } from '@/types/components/formTypes';
 import {
@@ -17,21 +17,29 @@ interface FormPageContainerProps extends ListProps {
   initialFormData?: ListItemDetail;
 }
 
+interface DefaultFormData {
+  title: string;
+  content: string;
+  uploadFile: UploadFileData[];
+}
+
 export default function FormPageContainer({
   params,
   initialFormData,
   type,
 }: FormPageContainerProps) {
   const router = useRouter();
-  const defaultFormData = {
+  const defaultFormData: DefaultFormData = {
     title: '',
     content: '',
+    uploadFile: [],
   };
   const [formData, setFormData] = useState({
     ...defaultFormData,
     ...(initialFormData && {
       title: initialFormData.title,
       content: initialFormData.content,
+      uploadFile: initialFormData.uploadFile,
     }),
   });
   const [selectedType, setSelectedType] = useState(

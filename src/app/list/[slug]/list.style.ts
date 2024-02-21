@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Link from 'next/link';
 
 export const ListSubtitle = styled.div`
   display: flex;
@@ -49,15 +50,21 @@ export const ListItemId = styled.div`
 `;
 
 export const ListItemTitle = styled.div`
-  width: 800px;
-  pointer: cursor;
+  width: 700px;
 `;
 
-export const ListItemDate = styled.div``;
+export const ListItemDate = styled.div`
+  width: 80px;
+  text-align: center;
+`;
 
 export const ButtonContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
   margin-top: 72px;
+`;
+
+export const StyledLink = styled(Link)`
+  cursor: pointer;
 `;
