@@ -11,6 +11,7 @@ import Sports from '@/assets/icons/header/Sports.svg';
 import Family from '@/assets/icons/header/Family.svg';
 import Academics from '@/assets/icons/header/academics.svg';
 import Ebooks from '@/assets/icons/header/ebooks.svg';
+import Close from '@/assets/icons/header/headerclose.svg';
 import Hamburger from '@/assets/icons/common/Hamburger.svg';
 import SearchIcon from '@/assets/icons/search/icoSearch.svg';
 import Mail from '@/assets/icons/inquiry/mail.svg';
@@ -33,6 +34,7 @@ export {
   Sports,
   Family,
   Ebooks,
+  Close,
   Hamburger,
   SearchIcon,
   Gokey,

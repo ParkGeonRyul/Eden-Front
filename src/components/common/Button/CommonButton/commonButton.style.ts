@@ -9,12 +9,12 @@ interface ButtonProps {
 
 const basicStyles = css`
   width: 173px;
-  padding: 19px 52px;
+  padding: 19px;
 `;
 
 const wideStyles = css`
   width: 520px;
-  padding: 14px 216px;
+  padding: 14px;
 `;
 
 const primaryStyles = css`
