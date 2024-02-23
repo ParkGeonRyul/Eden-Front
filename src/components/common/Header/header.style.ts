@@ -1,18 +1,38 @@
-('use client');
+'use client';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Link from 'next/link';
 
-export const Header = styled.header`
+interface HeaderProps {
+  isHeaderOpen: boolean;
+}
+
+export const HeaderContainer = styled.div`
+  position: fixed;
+  width: 100%;
+  top: 0;
+`;
+
+const headerOpenStyles = css`
+  background: #ffffff;
+`;
+
+export const Header = styled.header<HeaderProps>`
+  height: 80px;
   position: relative;
   display: flex;
   justify-content: space-between;
-  padding: 30px 60px 0;
+  padding: 22px 70px;
+  background: #e4d5c2;
+  ${({ isHeaderOpen }) => isHeaderOpen && headerOpenStyles}
+  transition: all 0.4s ease-in-out;
 `;
 
 export const ButtonBox = styled.div`
   display: flex;
-  gap: 16px;
+  gap: 58px;
+  align-items: center;
+  font-size: 16px;
 `;
 
 export const CategoryLinkContainer = styled.div`
@@ -38,7 +58,7 @@ export const Category = styled(Link)`
 
 export const CategoryBox = styled.div<{ height: string | number }>`
   position: absolute;
-  top: ${({ theme }) => theme.constants.headerHeight};
+  top: 80px;
   overflow: hidden;
   width: 100%;
   height: fit-content;

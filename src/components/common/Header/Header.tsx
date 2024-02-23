@@ -30,14 +30,14 @@ const Header = () => {
 
   const categoryLinkButtons = () => {
     const links = [
-      { label: 'HISTORY', to: '/', icon: <I.History /> },
-      { label: 'NOTICE', to: '/', icon: <I.Notice /> },
-      { label: 'FAMILY', to: '/', icon: <I.Family /> },
-      { label: 'CHILD', to: '/', icon: <I.Child /> },
-      { label: 'ACADEMICS', to: '/', icon: <I.Academics /> },
-      { label: 'SPORTS', to: '/', icon: <I.Sports /> },
-      { label: 'PET', to: '/', icon: <I.Pet /> },
-      { label: 'E-books', to: '/', icon: <I.Ebooks /> },
+      { label: 'History', to: '/history', icon: <I.History /> },
+      { label: 'Notice', to: '/list/notice', icon: <I.Notice /> },
+      { label: 'Family', to: '/list/family', icon: <I.Family /> },
+      { label: 'Children', to: '/list/children', icon: <I.Child /> },
+      { label: 'Academics', to: '/list/academics', icon: <I.Academics /> },
+      { label: 'Sports', to: '/list/sports', icon: <I.Sports /> },
+      { label: 'Pets', to: '/list/pets', icon: <I.Pet /> },
+      { label: 'E-books', to: '/list/e-books', icon: <I.Ebooks /> },
     ];
     return (
       <S.CategoryLinkContainer>
@@ -65,13 +65,15 @@ const Header = () => {
 
   return (
     <>
-      <S.Header>
-        {renderIcon()}
-        <S.ButtonBox>{renderLinkButtons()}</S.ButtonBox>
-      </S.Header>
-      <S.CategoryBox height={isHeaderOpen ? '100vh' : 0}>
-        {categoryLinkButtons()}
-      </S.CategoryBox>
+      <S.HeaderContainer>
+        <S.Header isHeaderOpen={isHeaderOpen}>
+          {renderIcon()}
+          <S.ButtonBox>{renderLinkButtons()}</S.ButtonBox>
+        </S.Header>
+        <S.CategoryBox height={isHeaderOpen ? '100vh' : 0}>
+          {categoryLinkButtons()}
+        </S.CategoryBox>
+      </S.HeaderContainer>
     </>
   );
 };
