@@ -28,7 +28,7 @@ export const InfoStyle = styled.div`
   margin: 25px 0 34px 0;
 `;
 
-export const CompanyAddress = styled.div``;
+export const CompanyInfoDetail = styled.div``;
 
 export const CompanyInfo = styled.div`
   display: flex;

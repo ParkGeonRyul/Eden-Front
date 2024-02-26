@@ -34,12 +34,16 @@ const Footer = () => {
         <S.MainInfo>
           <S.Logo>회사로고</S.Logo>
           <S.InfoStyle>
-            <div>회사주소</div>
+            <S.CompanyAddress>회사주소</S.CompanyAddress>
             <S.CompanyInfo>
-              <div>대표이사 : 이름</div>|<div>T.000-0000-0000</div>|
-              <div>F.팩스번호</div>|<div>E.sample@gmail.com</div>
+              <S.CompanyInfoDetail>대표이사 : 이름</S.CompanyInfoDetail>|
+              <S.CompanyInfoDetail>T.000-0000-0000</S.CompanyInfoDetail>|
+              <S.CompanyInfoDetail>F.팩스번호</S.CompanyInfoDetail>|
+              <S.CompanyInfoDetail>E.sample@gmail.com</S.CompanyInfoDetail>
             </S.CompanyInfo>
-            <div>사업자 등록번호 : 사업자 등록번호</div>
+            <S.CompanyInfoDetail>
+              사업자 등록번호 : 사업자 등록번호
+            </S.CompanyInfoDetail>
           </S.InfoStyle>
           <S.InfoName>© 회사이름</S.InfoName>
         </S.MainInfo>
