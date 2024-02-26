@@ -10,6 +10,7 @@ export const Footer = styled.div`
   height: 300px;
   align-items: center;
   justify-content: space-between;
+  flex-shrink: 0;
 `;
 
 export const MainInfo = styled.div`
@@ -26,6 +27,8 @@ export const InfoStyle = styled.div`
   font-weight: 300;
   margin: 25px 0 34px 0;
 `;
+
+export const CompanyAddress = styled.div``;
 
 export const CompanyInfo = styled.div`
   display: flex;
