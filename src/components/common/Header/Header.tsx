@@ -4,24 +4,27 @@ import * as I from '@/components/icons';
 import { Category } from '@/types/components/header';
 import { ComponentsType } from '@/types';
 import * as S from './header.style';
+import Auth from '@/components/Modal/AuthModal/Auth';
+import useModal from '@/hooks/useModal/usemodal';
 
 const Header = () => {
   const [isHeaderOpen, setIsHeaderOpen] = useState<boolean>(false);
   const [categories, setCategories] = useState<Category[]>([]);
+
   const toggleHeader = () => setIsHeaderOpen((prev) => !prev);
 
   const renderIcon = () =>
     isHeaderOpen ? (
-      <I.Close onClick={toggleHeader} />
+      <I.HeaderClose onClick={toggleHeader} />
     ) : (
       <I.Hamburger onClick={toggleHeader} />
     );
 
   const renderLinkButtons = () => {
     const links = [
-      { label: 'LOGIN', to: '/login' },
       { label: 'RESERVATION', to: '/reservation' },
       { label: 'CONTACT', to: '/inquiry' },
+      { label: 'KOREAN', to: '/' },
     ];
     return links.map((link, index) => (
       <LinkButton label={link.label} to={link.to} key={index} />
@@ -68,7 +71,10 @@ const Header = () => {
       <S.HeaderContainer>
         <S.Header isHeaderOpen={isHeaderOpen}>
           {renderIcon()}
-          <S.ButtonBox>{renderLinkButtons()}</S.ButtonBox>
+          <S.ButtonBox>
+            <Auth />
+            {renderLinkButtons()}
+          </S.ButtonBox>
         </S.Header>
         <S.CategoryBox height={isHeaderOpen ? '100vh' : 0}>
           {categoryLinkButtons()}

@@ -19,6 +19,7 @@ import ModalCloseButton from '@/assets/icons/common/modalCloseButton.svg';
 import Gokey from '@/assets/icons/mypage/goKey.svg';
 import MyInquiry from '@/assets/icons/mypage/myInquiry.svg';
 import ArrowUp from '@/assets/icons/viewCount/arrowUp.svg';
+import HeaderClose from '@/assets/icons/header/headerclose.svg';
 
 export {
   Check,
@@ -42,4 +43,5 @@ export {
   Mail,
   ModalCloseButton,
   ArrowUp,
+  HeaderClose,
 };
