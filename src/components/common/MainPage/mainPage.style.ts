@@ -6,4 +6,6 @@ export const Page = styled.div`
   margin: 0 auto;
   padding-top: 98px;
   padding-bottom: 120px;
+
+  flex: 1;
 `;

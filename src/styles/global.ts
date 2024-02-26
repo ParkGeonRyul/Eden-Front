@@ -11,6 +11,11 @@ export const GlobalStyle = createGlobalStyle`
     scroll-behavior: smooth;
   }
   body {
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+    
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 400;
     font-size: 16px;
