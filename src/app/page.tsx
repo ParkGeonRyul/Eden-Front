@@ -4,6 +4,7 @@ import axios from 'axios';
 import * as S from './home.style';
 import { MainTitle } from '@/types/apis/mainTitle';
 import { Typewriter } from 'react-simple-typewriter';
+import Mainpage from '@/components/common/MainPage/MainPage';
 
 export default function Home() {
   const [selectedLanguage, setSelectedLanguage] = useState<{
@@ -33,19 +34,21 @@ export default function Home() {
   }, [selectedLanguage.id]);
 
   return (
-    <S.MainContainer>
-      {selectedLanguage.title && (
-        <S.MainTitle>
-          <Typewriter
-            words={[selectedLanguage.title]}
-            loop={1} //1번만 실행되고 다시 반복되지 않게 하려면 1써야함
-            // cursor
-            // cursorStyle="|"
-            //위 두줄은 팀원들과 상의 후 주석처리된거 지우겠음 커서와 커서모양임
-            typeSpeed={70} //타이핑되는 속도
-          />
-        </S.MainTitle>
-      )}
-    </S.MainContainer>
+    <Mainpage>
+      <S.MainContainer>
+        {selectedLanguage.title && (
+          <S.MainTitle>
+            <Typewriter
+              words={[selectedLanguage.title]}
+              loop={1} //1번만 실행되고 다시 반복되지 않게 하려면 1써야함
+              // cursor
+              // cursorStyle="|"
+              //위 두줄은 팀원들과 상의 후 주석처리된거 지우겠음 커서와 커서모양임
+              typeSpeed={70} //타이핑되는 속도
+            />
+          </S.MainTitle>
+        )}
+      </S.MainContainer>
+    </Mainpage>
   );
 }
