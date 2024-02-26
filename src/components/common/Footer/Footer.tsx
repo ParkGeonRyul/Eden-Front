@@ -34,7 +34,7 @@ const Footer = () => {
         <S.MainInfo>
           <S.Logo>회사로고</S.Logo>
           <S.InfoStyle>
-            <S.CompanyAddress>회사주소</S.CompanyAddress>
+            <S.CompanyInfoDetail>회사주소</S.CompanyInfoDetail>
             <S.CompanyInfo>
               <S.CompanyInfoDetail>대표이사 : 이름</S.CompanyInfoDetail>|
               <S.CompanyInfoDetail>T.000-0000-0000</S.CompanyInfoDetail>|
