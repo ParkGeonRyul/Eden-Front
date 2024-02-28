@@ -14,8 +14,13 @@ const createBasicInfoData = (userInfo: UserInfo): BasicInfoItem[] => {
   const items: BasicInfoItem[] = [
     {
       label: '이름',
-      field: 'userName',
-      value: userInfo.userName,
+      field: 'userFirstName',
+      value: userInfo.userFirstName,
+    },
+    {
+      label: '성',
+      field: 'userLastName',
+      value: userInfo.userLastName,
     },
     {
       label: '아이디',
@@ -49,7 +54,8 @@ const createBasicInfoData = (userInfo: UserInfo): BasicInfoItem[] => {
 
 const addActiveToBasicInfoData = (userInfo: UserInfo): EditBasicInfoItem[] => {
   const activeValues = {
-    userName: false,
+    userFirstName: false,
+    userLastName: false,
     userId: true,
     userEmail: true,
     address: true,

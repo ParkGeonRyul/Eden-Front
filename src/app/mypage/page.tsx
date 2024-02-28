@@ -10,7 +10,8 @@ import * as S from './info.style';
 
 export default function Page() {
   const [userInfo, setUserInfo] = useState<UserInfo>({
-    userName: '',
+    userFirstName: '',
+    userLastName: '',
     userId: '',
     userEmail: '',
     address: '',
