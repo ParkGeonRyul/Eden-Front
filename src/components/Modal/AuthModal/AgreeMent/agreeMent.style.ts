@@ -12,7 +12,6 @@ export const BackGround = styled.div`
   padding: 50px 0;
   position: relative;
   background-color: white;
-  border: 1px solid #4f4f4f;
 `;
 
 export const CloseBtn = styled.button`
@@ -71,6 +70,11 @@ export const ItemRequired = styled.span<RequiredState>`
   color: ${(props) => (props.required ? 'green' : 'grey')};
 `;
 
+export const ViewTerms = styled.button`
+  color: grey;
+  font-size: 15px;
+`;
+
 export const CheckBoxContainer = styled.div`
   display: flex;
   align-items: center;
@@ -81,8 +85,8 @@ export const Agree = styled.div`
 `;
 
 export const ButtonContainer = styled.div`
-  height: 150px;
-  padding: 50px;
+  height: 100px;
+  padding: 50px 50px 0 50px;
   display: flex;
   justify-content: center;
   gap: 30px;

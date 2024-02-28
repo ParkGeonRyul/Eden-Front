@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import useModal from '@/hooks/useModal/usemodal';
 import AgreeMent from './AgreeMent/AgreeMent';
+import SignComplete from './SignComplete/SignComplete';
 import SignIn from './SignIn/SignIn';
 import SignUp from './SignUp/SignUp';
 import * as S from './auth.styled';
@@ -23,17 +24,30 @@ const Auth = () => {
   const AuthModal = {
     SignIn: (
       <SignIn
-        goToAgreeMent={() => setCurrentModal('AgreeMent')}
         close={closeModal}
+        goToAgreeMent={() => setCurrentModal('AgreeMent')}
       />
     ),
     AgreeMent: (
       <AgreeMent
-        goToSignUp={() => setCurrentModal('SignUp')}
         close={closeModal}
+        goToSignUp={() => setCurrentModal('SignUp')}
+        goToPrevious={() => setCurrentModal('SignIn')}
       />
     ),
-    SignUp: <SignUp close={closeModal} />,
+    SignUp: (
+      <SignUp
+        close={closeModal}
+        goToPrevious={() => setCurrentModal('AgreeMent')}
+        goToSignComplete={() => setCurrentModal('SignComplete')}
+      />
+    ),
+    SignComplete: (
+      <SignComplete
+        close={closeModal}
+        goToSignIn={() => setCurrentModal('SignIn')}
+      />
+    ),
   } as const;
 
   return (

@@ -8,7 +8,6 @@ export const BackGround = styled.div`
   padding: 50px;
   position: relative;
   background-color: white;
-  border: 1px solid #4f4f4f;
   overflow: scroll;
 `;
 
@@ -64,15 +63,34 @@ export const InputCategory = styled.div`
   gap: 2px;
 `;
 
-export const CategoryName = styled.div``;
+export const CategoryInfo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
 
-export const InputContent = styled.input`
+export const CategoryBox = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const ErrorSpan = styled.span<{ hasError?: boolean }>`
+  color: ${({ hasError }) => (hasError ? 'red' : 'transparent')};
+  margin-top: 5px;
+  font-size: 12px;
+`;
+
+export const CategoryName = styled.div`
+  margin-top: 5px;
+`;
+
+export const InputContent = styled.input<{ hasError?: boolean }>`
   width: 100%;
   height: 35px;
   padding: 5px 0;
   width: 100%;
   border: none;
-  border-bottom: 1px solid #c0c0c0;
+  border-bottom: 1px solid ${({ hasError }) => (hasError ? 'red' : '#c0c0c0')};
   outline: none;
 `;
 
@@ -103,29 +121,15 @@ export const Timer = styled.div`
   text-align: center;
 `;
 
-export const AgreeMentContainer = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-export const AgreeMentInfo = styled.div`
-  display: flex;
-  gap: 10px;
-`;
-
-export const AgreeMentText = styled.div``;
-
-export const SpanColor = styled.span`
+export const SpanStyle = styled.span`
   color: green;
+  margin-top: 5px;
 `;
 
-export const AgreeMentBtn = styled.button`
-  color: #a9a9a9;
-`;
-
-export const SignUpBtnBox = styled.div`
-  margin-top: 20px;
+export const ButtonContainer = styled.div`
+  height: 100px;
+  padding-top: 50px;
   display: flex;
+  justify-content: center;
+  gap: 30px;
 `;
