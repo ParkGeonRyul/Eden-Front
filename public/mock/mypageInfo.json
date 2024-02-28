@@ -1,5 +1,6 @@
 {
-  "userName": "김에덴",
+  "userFirstName": "에덴",
+  "userLastName": "김",
   "userId": "sample",
   "userEmail": "sample@naver.com",
   "address": "에덴시 에덴구 에덴동 에덴아파트 1004호",
