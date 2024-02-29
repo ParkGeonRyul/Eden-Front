@@ -1,0 +1,63 @@
+{
+  "data": [
+    {
+      "postId": 1,
+      "title": "pet01sdfsdfsdfsdfsdfsdafasdf",
+      "userId": "sandsand3222",
+      "date": "2020.10.10",
+      "answerStatus": true
+    },
+    {
+      "postId": 12,
+      "title": "pedadf",
+      "userId": "gggggg",
+      "date": "2020.10.10",
+      "answerStatus": true
+    },
+    {
+      "postId": 3,
+      "title": "pet03",
+      "userId": "모래4",
+      "date": "2020.10.10",
+      "answerStatus": false
+    },
+    {
+      "postId": 4,
+      "title": "ad",
+      "userId": "모래6",
+      "date": "2020.10.10",
+      "answerStatus": false
+    },
+    {
+      "postId": 5,
+      "title": "pet01sdfsdfsdfsdfsdfsdafasdf",
+      "userId": "sandsand3222",
+      "date": "2020.10.10",
+      "answerStatus": true
+    },
+    {
+      "postId": 6,
+      "title": "dasf",
+      "userId": "gggggg",
+      "date": "2020.10.10",
+      "answerStatus": true
+    },
+    {
+      "postId": 7,
+      "title": "pet03",
+      "userId": "모래4",
+      "date": "2020.10.10",
+      "answerStatus": false
+    },
+    {
+      "postId": 8,
+      "title": "adsf",
+      "userId": "모래6",
+      "date": "2020.10.10",
+      "answerStatus": false
+    }
+  ],
+  "totalItems": 100,
+  "totalPages": 20,
+  "currentPage": 1
+}
