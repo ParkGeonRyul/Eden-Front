@@ -1,11 +1,14 @@
 'use client';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 import PageTitle from '@/components/common/PageTitle/PageTitle';
 import SearchBar from '@/components/common/SearchBar/SearchBar';
 import CommonButton from '@/components/common/Button/CommonButton/CommonButton';
 import PaginationButtons from '@/components/common/Pagination/Pagination';
 import { ListItem, ListData } from '@/types/apis/listItem';
 import * as S from './list.style';
+
+const LIMIT_PER_PAGE = 5;
 
 interface ListPageProps {
   params: {
@@ -18,19 +21,23 @@ export default function ListPage({ params }: ListPageProps) {
   const [listItems, setListItems] = useState<ListItem[]>([]);
   const [totalPages, setTotalPages] = useState(0);
 
-  const limitPerPage = 5;
+  const ListCategory = params.slug;
 
   useEffect(() => {
     //TODO api 분리 후 slug에 따라 다이나믹 통신하기!
-    // 백엔드랑 통신시 api 주소 및 양식 변경 예정
     const fetchData = async () => {
       try {
-        const res = await fetch(`/mock/${params.slug}ListItem.json`);
-        const result: { data: ListData } = await res.json();
-        const { list, totalPages } = result.data;
+        const params = { limit: LIMIT_PER_PAGE };
+
+        const response = await axios.get(`/mock/${ListCategory}ListItem.json`, {
+          params,
+        });
+
+        const result: { data: ListData } = response.data;
+        const { list, totalPage } = result.data;
 
         setListItems(list);
-        setTotalPages(totalPages);
+        setTotalPages(totalPage);
       } catch (error) {
         console.error('Failed to fetch data:', error);
       }
@@ -44,7 +51,7 @@ export default function ListPage({ params }: ListPageProps) {
       <S.ListItem key={index}>
         <S.ListItemId>{item.postId}</S.ListItemId>
         <S.ListItemTitle>
-          <S.StyledLink href={`/list/${params.slug}/${item.postId}`}>
+          <S.StyledLink href={`/list/${ListCategory}/${item.postId}`}>
             {item.title}
           </S.StyledLink>
         </S.ListItemTitle>
@@ -55,7 +62,7 @@ export default function ListPage({ params }: ListPageProps) {
 
   return (
     <>
-      <PageTitle>{params.slug.toUpperCase()}</PageTitle>
+      <PageTitle>{ListCategory.toUpperCase()}</PageTitle>
       <S.ListSubtitle>새로운 소식 및 공지 사항을 알려드립니다.</S.ListSubtitle>
       <SearchBar></SearchBar>
       <S.Section>
@@ -66,13 +73,11 @@ export default function ListPage({ params }: ListPageProps) {
         </S.ListCategory>
         {renderingListItems()}
       </S.Section>
-      <PaginationButtons
-        limitPerPage={limitPerPage}
-        totalPages={totalPages}></PaginationButtons>
+      <PaginationButtons totalPages={totalPages}></PaginationButtons>
 
       {isAdmin && (
         <S.ButtonContainer>
-          <S.StyledLink href={`/list/${params.slug}/new`}>
+          <S.StyledLink href={`/list/${ListCategory}/new`}>
             <CommonButton type="primary">글 작성</CommonButton>
           </S.StyledLink>
         </S.ButtonContainer>
