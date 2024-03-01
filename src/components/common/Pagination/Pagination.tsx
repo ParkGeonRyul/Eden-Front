@@ -4,22 +4,18 @@ import { useState } from 'react';
 import * as I from '@/components/icons/index';
 import * as S from './pagination.style';
 
-const pageButtonCount = 5;
+const BUTTONS_PER_PAGE = 5;
 
 interface PaginationButtonsProps {
   totalPages: number;
-  limitPerPage: number;
 }
 
-function PaginationButtons({
-  limitPerPage,
-  totalPages,
-}: PaginationButtonsProps) {
+function PaginationButtons({ totalPages }: PaginationButtonsProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [currentPageGroupIndex, setCurrentPageGroupIndex] = useState(0);
 
-  const lastPageGroupIndex = Math.ceil(totalPages / pageButtonCount) - 1;
+  const lastPageGroupIndex = Math.ceil(totalPages / BUTTONS_PER_PAGE) - 1;
 
   const currentPage = Number(searchParams.get('page')) || 1;
 
@@ -32,11 +28,11 @@ function PaginationButtons({
   const buttons = Array.from(
     {
       length: Math.min(
-        limitPerPage,
-        totalPages - currentPageGroupIndex * limitPerPage,
+        BUTTONS_PER_PAGE,
+        totalPages - currentPageGroupIndex * BUTTONS_PER_PAGE,
       ),
     },
-    (_, i) => i + 1 + currentPageGroupIndex * pageButtonCount,
+    (_, i) => i + 1 + currentPageGroupIndex * BUTTONS_PER_PAGE,
   );
 
   return (

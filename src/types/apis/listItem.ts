@@ -20,6 +20,6 @@ export interface ListItemDetail extends ListItem {
 
 export interface ListData {
   totalCount: number;
-  totalPages: number;
+  totalPage: number;
   list: ListItem[];
 }

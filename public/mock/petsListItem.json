@@ -1,7 +1,7 @@
 {
   "data": {
-    "totalCount": 4,
-    "totalPage": 1,
+    "totalCount": 35,
+    "totalPage": 7,
     "list": [
       {
         "title": "title2",
@@ -17,6 +17,11 @@
         "title": "title2",
         "createdAt": "24.02.27",
         "postId": 12
+      },
+      {
+        "title": "modified title1",
+        "createdAt": "24.02.27",
+        "postId": 11
       },
       {
         "title": "modified title1",
