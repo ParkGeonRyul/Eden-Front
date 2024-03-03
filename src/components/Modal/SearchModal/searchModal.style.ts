@@ -8,6 +8,7 @@ export const SearchModal = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+  padding: 20px 20px 20px 20px;
 `;
 
 export const CloseButton = styled.button`
@@ -33,7 +34,7 @@ export const ModalBody = styled.div`
 `;
 
 export const ModalInput = styled.input`
-  width: 520px;
+  width: 100%;
   height: 50px;
   margin-bottom: 32px;
   border: none;
@@ -45,5 +46,16 @@ export const ModalInput = styled.input`
 
 export const InputTitle = styled.span`
   align-self: flex-start;
-  padding-left: 40px;
+`;
+
+export const FullName = styled.div`
+  display: flex;
+  gap: 50px;
+  width: 100%;
+`;
+
+export const NameContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: calc(50% - 16px);
 `;

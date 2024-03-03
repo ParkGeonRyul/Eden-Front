@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import * as SM from './searchModal.style';
+import * as S from './searchModal.style';
 import CommonButton from '@/components/common/Button/CommonButton/CommonButton';
 import { useRouter } from 'next/navigation';
 
@@ -10,7 +10,8 @@ interface SearchModalProps {
 const SearchModal = ({ close }: SearchModalProps) => {
   const router = useRouter();
   const [formData, setFormData] = useState({
-    name: '',
+    userLastName: '',
+    userFirstName: '',
     email: '',
     inquiryNumber: '',
   });
@@ -24,7 +25,12 @@ const SearchModal = ({ close }: SearchModalProps) => {
   };
 
   const handleSearch = () => {
-    if (formData.name && formData.email && formData.inquiryNumber) {
+    if (
+      formData.userLastName &&
+      formData.userFirstName &&
+      formData.email &&
+      formData.inquiryNumber
+    ) {
       router.push('/inquiry/post');
     } else {
       alert('모든 필드를 채워주세요.');
@@ -32,25 +38,43 @@ const SearchModal = ({ close }: SearchModalProps) => {
   };
 
   return (
-    <SM.SearchModal>
-      <SM.CloseButton onClick={close}>X</SM.CloseButton>
+    <S.SearchModal>
+      <S.CloseButton onClick={close}>X</S.CloseButton>
 
-      <SM.ModalBody>
-        <SM.ModalTitle>조회하기</SM.ModalTitle>
-        <SM.InputTitle>이름</SM.InputTitle>
-        <SM.ModalInput
-          name="name"
-          placeholder="이름"
-          onChange={(e) => handleInputChange('name', e.target.value)}
-        />
-        <SM.InputTitle>이메일</SM.InputTitle>
-        <SM.ModalInput
+      <S.ModalBody>
+        <S.ModalTitle>조회하기</S.ModalTitle>
+
+        <S.FullName>
+          <S.NameContainer>
+            <S.InputTitle>성</S.InputTitle>
+            <S.ModalInput
+              name="userLastName"
+              placeholder="성"
+              onChange={(e) =>
+                handleInputChange('userLastName', e.target.value)
+              }
+            />
+          </S.NameContainer>
+          <S.NameContainer>
+            <S.InputTitle>이름</S.InputTitle>
+            <S.ModalInput
+              name="userFirstName"
+              placeholder="이름"
+              onChange={(e) =>
+                handleInputChange('userFirstName', e.target.value)
+              }
+            />
+          </S.NameContainer>
+        </S.FullName>
+
+        <S.InputTitle>이메일</S.InputTitle>
+        <S.ModalInput
           name="email"
           placeholder="이메일"
           onChange={(e) => handleInputChange('email', e.target.value)}
         />
-        <SM.InputTitle>문의번호</SM.InputTitle>
-        <SM.ModalInput
+        <S.InputTitle>문의번호</S.InputTitle>
+        <S.ModalInput
           name="inquiryNumber"
           placeholder="문의번호"
           onChange={(e) => handleInputChange('inquiryNumber', e.target.value)}
@@ -63,8 +87,8 @@ const SearchModal = ({ close }: SearchModalProps) => {
           onClick={handleSearch}>
           조회하기
         </CommonButton>
-      </SM.ModalBody>
-    </SM.SearchModal>
+      </S.ModalBody>
+    </S.SearchModal>
   );
 };
 
