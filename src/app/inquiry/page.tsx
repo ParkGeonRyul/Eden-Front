@@ -25,7 +25,8 @@ export default function Inquiry() {
     selectedType: '',
     title: '',
     content: '',
-    name: '',
+    userFirstName: '',
+    userLastName: '',
     emailId: '',
     emailDomain: '',
     isCustomDomain: true,
@@ -148,7 +149,15 @@ export default function Inquiry() {
                 </S.InquiryInfoTitle>
                 <S.InputName
                   placeholder="이름 입력"
-                  onChange={(e) => handleInputChange('name', e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange('userFirstName', e.target.value)
+                  }
+                />
+                <S.InputName
+                  placeholder="성 입력"
+                  onChange={(e) =>
+                    handleInputChange('userLastName', e.target.value)
+                  }
                 />
               </S.InquiryDisplay>
               <S.InquiryDisplay>

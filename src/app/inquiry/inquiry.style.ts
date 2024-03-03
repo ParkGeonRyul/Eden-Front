@@ -86,6 +86,7 @@ export const InputName = styled.input`
   padding: 15.5px 9px;
   border: 1px solid #cdcdcd;
   outline: none;
+  margin-right: 40px;
 `;
 
 export const InputEmail = styled.input`
