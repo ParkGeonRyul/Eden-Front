@@ -4,7 +4,8 @@ export const validateInquiryData = ({
   selectedType,
   title,
   content,
-  name,
+  userFirstName,
+  userLastName,
   emailId,
   emailDomain,
   isCheckboxChecked,
@@ -12,16 +13,18 @@ export const validateInquiryData = ({
   const isTypeValid = selectedType !== '';
   const isTitleValid = title.trim() !== '';
   const isContentValid = content.trim() !== '';
-  const isNameValid = name.trim() !== '';
+  const isUserFirstNameValid = userFirstName.trim() !== '';
+  const isUserLastNameValid = userLastName.trim() !== '';
   const isEmailIdValid = emailId.trim() !== '';
-  const isEmailValid = emailDomain.trim() !== '';
+  const isEmailDomainValid = emailDomain.trim() !== '';
   return (
     isTypeValid &&
     isTitleValid &&
     isContentValid &&
-    isNameValid &&
+    isUserFirstNameValid &&
+    isUserLastNameValid &&
     isEmailIdValid &&
-    isEmailValid &&
+    isEmailDomainValid &&
     isCheckboxChecked
   );
 };
