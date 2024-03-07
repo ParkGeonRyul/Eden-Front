@@ -1,24 +1,45 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import InquiryDetail from '@/components/Mypage/Inquiry/InquiryDetail/InquiryDetail';
-import InquiryListItem from '@/components/Mypage/Inquiry/InquiryList/InquiryListItem';
-import { InquiryPostData } from '@/types/apis/userInquiry';
+import { InquiryPost, InquiryPostList } from '@/types/apis/userInquiry';
+import InquiryDetail from '../_components/Inquiry/InquiryDetail/InquiryDetail';
+import InquiryList from '../_components/Inquiry/InquiryList/InquiryList';
 import * as S from './inquiry.style';
 
-export default function Page() {
-  const [inquiryData, setInquiryData] = useState<InquiryPostData | null>(null);
+export default function Page({
+  searchParams,
+}: {
+  searchParams: {
+    [key: string]: string | string[] | undefined;
+  };
+}) {
+  const [inquiryData, setInquiryData] = useState<InquiryPost | null>(null);
+  const [inquiryListItemData, setInquiryListItemData] =
+    useState<InquiryPostList | null>(null);
 
   useEffect(() => {
     //TODO react-query로 변경 및 api 분리
-    const fetchUserInfo = async () => {
+    const fetchInquiry = async () => {
       const inquiryData = await fetch('/mock/userInquiry.json');
       const result = await inquiryData.json();
       setInquiryData(result);
     };
 
-    fetchUserInfo();
+    fetchInquiry();
   }, []);
+
+  useEffect(() => {
+    //TODO react-query로 변경 및 api 분리
+    const fetchInquiryList = async () => {
+      const inquiryListItemData = await fetch(
+        `/mock/inquiryList${searchParams.page}.json`,
+      );
+      const result = await inquiryListItemData.json();
+      setInquiryListItemData(result.data);
+    };
+
+    fetchInquiryList();
+  }, [searchParams.page]);
 
   return (
     <S.InquiryContainer>
@@ -26,17 +47,17 @@ export default function Page() {
         <S.NotInquiry>문의한 글이 없어요.</S.NotInquiry>
       ) : (
         <S.InquiryBox>
-          <S.InquiryWrapper>
+          <S.InquiryWrapper key={inquiryData.inquiryUniqueId}>
             <InquiryDetail inquiry={inquiryData}></InquiryDetail>
-            {inquiryData.adminAnswer ? (
+            {inquiryData.answerStatus ? (
               <S.ReviewContainer>
                 <S.ReviewHeader>
                   <S.ReviewTitle>admin</S.ReviewTitle>
                   <S.ReviewInfo>
-                    <S.Date>{inquiryData.adminAnswer.createdAt}</S.Date>
+                    <S.Date>{inquiryData.answerUpdatedAt}</S.Date>
                   </S.ReviewInfo>
                 </S.ReviewHeader>
-                <S.ReviewBody>{inquiryData.adminAnswer.content}</S.ReviewBody>
+                <S.ReviewBody>{inquiryData.answer}</S.ReviewBody>
               </S.ReviewContainer>
             ) : (
               <S.AnswerContainer>
@@ -45,29 +66,9 @@ export default function Page() {
             )}
           </S.InquiryWrapper>
 
-          <S.InquiryTable>
-            <S.TableHeader>
-              <S.TableTitle>전체보기</S.TableTitle>
-              <S.TableCount>
-                {inquiryData.postList.length}개의 문의
-              </S.TableCount>
-            </S.TableHeader>
-
-            <S.TableList>
-              <S.ListCategory>
-                <S.ListTitle>글제목</S.ListTitle>
-                <S.ListInfo>
-                  <S.ListState>답변여부</S.ListState>
-                  <S.ListDate>작성일</S.ListDate>
-                </S.ListInfo>
-              </S.ListCategory>
-              {inquiryData.postList.map((post) => (
-                <InquiryListItem
-                  key={post.postId}
-                  post={post}></InquiryListItem>
-              ))}
-            </S.TableList>
-          </S.InquiryTable>
+          {inquiryListItemData && (
+            <InquiryList inquiryListItemData={inquiryListItemData} />
+          )}
         </S.InquiryBox>
       )}
     </S.InquiryContainer>

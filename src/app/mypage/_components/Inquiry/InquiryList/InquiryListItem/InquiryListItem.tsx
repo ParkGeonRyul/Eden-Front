@@ -1,23 +1,23 @@
 import React from 'react';
 import AnswerStatusLabel from '@/components/common/Label/AnswerStatusLabel/AnswerStatusLabel';
-import { InquiryPost } from '@/types/apis/userInquiry';
+import { InquiryPostListItem } from '@/types/apis/userInquiry';
 import * as S from './inquiryListItem.style';
 
 interface InquiryListItemProps {
-  post: InquiryPost;
+  item: InquiryPostListItem;
 }
 
-const InquiryListItem: React.FC<InquiryListItemProps> = ({ post }) => (
+const InquiryListItem: React.FC<InquiryListItemProps> = ({ item }) => (
   <S.WriteList>
-    <S.WriteTitle>{post.content}</S.WriteTitle>
+    <S.WriteTitle>{item.title}</S.WriteTitle>
     <S.ListInfo>
       <S.ListState>
-        <AnswerStatusLabel type={post.answerStatus === true ? 'done' : 'hold'}>
-          {post.answerStatus === true ? '답변완료' : '답변대기'}
+        <AnswerStatusLabel type={item.answerStatus === true ? 'done' : 'hold'}>
+          {item.answerStatus === true ? '답변완료' : '답변대기'}
         </AnswerStatusLabel>
       </S.ListState>
       <S.ListDate>
-        <S.Date>{post.createdAt}</S.Date>
+        <S.Date>{item.inquiryCreatedAt}</S.Date>
       </S.ListDate>
     </S.ListInfo>
   </S.WriteList>

@@ -1,0 +1,27 @@
+{
+  "data": {
+    "totalCount": 13,
+    "totalPage": 5,
+
+    "list": [
+      {
+        "inquiryUniqueId": "7",
+        "inquiryCreatedAt": "23.10.21",
+        "title": "3333",
+        "answerStatus": true
+      },
+      {
+        "inquiryUniqueId": "8",
+        "inquiryCreatedAt": "23.10.11",
+        "title": "33333",
+        "answerStatus": false
+      },
+      {
+        "inquiryUniqueId": "9",
+        "inquiryCreatedAt": "23.9.21",
+        "title": "333333",
+        "answerStatus": false
+      }
+    ]
+  }
+}
