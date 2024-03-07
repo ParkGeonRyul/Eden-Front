@@ -1,9 +1,11 @@
-import LinkButton from '@/components/common/Button/LinkButton';
+'use client';
+import { usePathname } from 'next/navigation';
 import * as I from '@/components/icons/index';
 import * as S from './sidenav.style';
 import React from 'react';
 
 const SideNav = () => {
+  const pathname = usePathname();
   const renderNavCategory = () => {
     const navCategory = [
       {
@@ -21,7 +23,10 @@ const SideNav = () => {
     return navCategory.map((category, index) => (
       <S.TabSection key={index} href={`${category.to}`}>
         <S.TabIcon>{category.icon}</S.TabIcon>
-        <S.TabMenu>{category.label}</S.TabMenu>
+        <S.TabMenu>
+          {pathname === category.to && '* '}
+          {category.label}
+        </S.TabMenu>
       </S.TabSection>
     ));
   };
