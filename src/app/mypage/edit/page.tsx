@@ -4,19 +4,20 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import AddressModal from '@/components/Modal/AddressModal/AddressModal';
 import EmailAuthModal from '@/components/Modal/EmailAuthModal/EmailAuthModal';
-import BasicInfoSection from '@/components/Mypage/Info/BasicInfoSection/BasicInfoSection';
-import ProfileSection from '@/components/Mypage/Info/ProfileInfoSection/ProfileInfoSection';
-import { addActiveToBasicInfoData } from '@/components/Mypage/Info/basicInfoConstants';
 import CommonButton from '@/components/common/Button/CommonButton/CommonButton';
 import useModal from '@/hooks/useModal/usemodal';
 import { UserInfo } from '@/types/apis/userInfo';
+import BasicInfoSection from '../_components/Info/BasicInfoSection/BasicInfoSection';
+import ProfileSection from '../_components/Info/ProfileInfoSection/ProfileInfoSection';
+import { addActiveToBasicInfoData } from '../_components/Info/basicInfoConstants';
 import * as S from './edit.style';
 
 export default function Page() {
   const router = useRouter();
   const { open, close, Modal } = useModal();
   const [userInfo, setUserInfo] = useState<UserInfo>({
-    userName: '',
+    userFirstName: '',
+    userLastName: '',
     userId: '',
     userEmail: '',
     address: '',

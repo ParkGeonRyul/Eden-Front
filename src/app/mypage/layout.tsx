@@ -1,5 +1,5 @@
 import * as S from '@/app/mypage/info.style';
-import SideNav from '@/components/Mypage/SideNav/Sidenav';
+import SideNav from './_components/SideNav/Sidenav';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (

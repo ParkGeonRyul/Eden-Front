@@ -16,7 +16,7 @@ import Close from '@/assets/icons/header/headerclose.svg';
 import HeaderClose from '@/assets/icons/header/headerclose.svg';
 import Notice from '@/assets/icons/header/noticeboard.svg';
 import Mail from '@/assets/icons/inquiry/mail.svg';
-import Gokey from '@/assets/icons/mypage/goKey.svg';
+import MyInfo from '@/assets/icons/mypage/myInfo.svg';
 import MyInquiry from '@/assets/icons/mypage/myInquiry.svg';
 import ArrowLeft from '@/assets/icons/pagination/arrowLeft.svg';
 import ArrowRight from '@/assets/icons/pagination/arrowRight.svg';
@@ -40,7 +40,7 @@ export {
   Close,
   Hamburger,
   SearchIcon,
-  Gokey,
+  MyInfo,
   MyInquiry,
   Mail,
   ModalCloseButton,

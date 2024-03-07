@@ -1,0 +1,27 @@
+{
+  "data": {
+    "totalCount": 13,
+    "totalPage": 5,
+
+    "list": [
+      {
+        "inquiryUniqueId": "2",
+        "inquiryCreatedAt": "23.10.21",
+        "title": "나는 중복이에요",
+        "answerStatus": true
+      },
+      {
+        "inquiryUniqueId": "7",
+        "inquiryCreatedAt": "23.10.11",
+        "title": "2222",
+        "answerStatus": false
+      },
+      {
+        "inquiryUniqueId": "6",
+        "inquiryCreatedAt": "23.9.21",
+        "title": "22222",
+        "answerStatus": false
+      }
+    ]
+  }
+}

@@ -5,13 +5,13 @@ import styled from 'styled-components';
 
 export const SideBar = styled.div`
   position: fixed;
-  width: 280px;
+  max-width: 280px;
   display: flex;
   flex-direction: column;
   gap: 8px;
 `;
 export const TabSection = styled(Link)`
-  width: 100%;
+  width: auto;
   padding: 16px 0;
 
   display: flex;
@@ -19,9 +19,13 @@ export const TabSection = styled(Link)`
   gap: 10px;
 `;
 
-export const TabIcon = styled.div`
+export const TabIcon = styled.div<{ isCurrentPage: boolean }>`
   width: 24px;
   height: 24px;
+
+  svg path {
+    fill: ${({ isCurrentPage }) => (isCurrentPage ? 'black' : '#84828A')};
+  }
 `;
 
 export const TabMenu = styled.div`
