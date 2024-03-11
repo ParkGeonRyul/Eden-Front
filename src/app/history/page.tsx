@@ -1,7 +1,8 @@
 'use client';
-import * as S from './history.style';
+
 import Mainpage from '@/components/common/MainPage/MainPage';
 import PageTitle from '@/components/common/PageTitle/PageTitle';
+import * as S from './history.style';
 
 interface infoItems {
   infoItems: string;

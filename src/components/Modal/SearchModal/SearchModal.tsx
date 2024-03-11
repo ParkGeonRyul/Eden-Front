@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import * as S from './searchModal.style';
-import CommonButton from '@/components/common/Button/CommonButton/CommonButton';
 import { useRouter } from 'next/navigation';
+import CommonButton from '@/components/common/Button/CommonButton/CommonButton';
+import * as S from './searchModal.style';
 
 interface SearchModalProps {
   close: () => void;

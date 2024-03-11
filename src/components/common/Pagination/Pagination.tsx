@@ -1,6 +1,7 @@
 'use client';
-import { usePathname, useSearchParams } from 'next/navigation';
+
 import { useState } from 'react';
+import { usePathname, useSearchParams } from 'next/navigation';
 import * as I from '@/components/icons/index';
 import * as S from './pagination.style';
 

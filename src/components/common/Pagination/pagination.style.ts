@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
 import Link from 'next/link';
+import styled, { css } from 'styled-components';
 
 export const PaginationContainer = styled.nav`
   display: flex;

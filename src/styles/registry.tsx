@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 import { useServerInsertedHTML } from 'next/navigation';
+import Footer from '@/components/common/Footer/Footer';
+import Header from '@/components/common/Header/Header';
 import {
   ServerStyleSheet,
   StyleSheetManager,
@@ -9,8 +11,6 @@ import {
 } from 'styled-components';
 import { GlobalStyle } from './global';
 import { theme } from './theme';
-import Header from '@/components/common/Header/Header';
-import Footer from '@/components/common/Footer/Footer';
 
 export default function StyledComponentsRegistry({
   children,

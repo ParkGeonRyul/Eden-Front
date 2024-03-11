@@ -1,19 +1,19 @@
 'use client';
+
 import { useState } from 'react';
-import PageTitle from '@/components/common/PageTitle/PageTitle';
-import CheckBox from '@/components/common/CheckBox/CheckBox';
-import Mainpage from '@/components/common/MainPage/MainPage';
-import DropDown from '@/components/common/DropDown/DropDown';
-import CommonButton from '@/components/common/Button/CommonButton/CommonButton';
 import InquiryModal from '@/components/Modal/InquiryModal/InquiryModal';
 import SearchModal from '@/components/Modal/SearchModal/SearchModal';
+import CommonButton from '@/components/common/Button/CommonButton/CommonButton';
+import CheckBox from '@/components/common/CheckBox/CheckBox';
+import DropDown from '@/components/common/DropDown/DropDown';
+import Mainpage from '@/components/common/MainPage/MainPage';
+import PageTitle from '@/components/common/PageTitle/PageTitle';
 import useModal from '@/hooks/useModal/usemodal';
-import * as S from './inquiry.style';
-
 import {
-  validateInquiryData,
   isContentLengthValid,
+  validateInquiryData,
 } from '@/utils/inquiry/validateInquiryData';
+import * as S from './inquiry.style';
 
 export default function Inquiry() {
   const { Modal, open, close } = useModal();

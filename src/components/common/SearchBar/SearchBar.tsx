@@ -1,8 +1,9 @@
 'use client';
-import * as S from './searchBar.style';
+
+import React, { useEffect, useState } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import * as I from '@/components/icons/index';
-import React, { useState, useEffect } from 'react';
-import { useRouter, usePathname } from 'next/navigation';
+import * as S from './searchBar.style';
 
 const SearchBar = () => {
   const [searchState, setSearchState] = useState<string>('');

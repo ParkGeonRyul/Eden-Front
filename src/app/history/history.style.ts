@@ -1,6 +1,7 @@
 'use client';
-import styled from 'styled-components';
+
 import Image from 'next/image';
+import styled from 'styled-components';
 
 export const SubTitle = styled.div`
   text-align: center;

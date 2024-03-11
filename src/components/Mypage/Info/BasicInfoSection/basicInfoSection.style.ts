@@ -1,5 +1,6 @@
 'use client';
-import { styled, css } from 'styled-components';
+
+import { css, styled } from 'styled-components';
 
 interface InfoContentProps {
   active: boolean;

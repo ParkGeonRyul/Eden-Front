@@ -1,9 +1,10 @@
 'use client';
-import CheckBox from '@/components/common/CheckBox/CheckBox';
-import * as S from './signUp.style';
-import * as I from '@/components/icons';
-import CommonButton from '@/components/common/Button/CommonButton/CommonButton';
+
 import AuthButton from '@/components/common/Button/AuthButton/AuthButton';
+import CommonButton from '@/components/common/Button/CommonButton/CommonButton';
+import CheckBox from '@/components/common/CheckBox/CheckBox';
+import * as I from '@/components/icons';
+import * as S from './signUp.style';
 
 interface SignUpProps {
   close: () => void;

@@ -1,12 +1,13 @@
 'use client';
-import { ReactElement, useEffect, useState, useRef } from 'react';
-import axios from 'axios';
+
+import { ReactElement, useEffect, useRef, useState } from 'react';
 import ArrowUpIcon from '@/components/icons/ArrowUpIcon';
-import ViewCountDropdown from './ViewCountDropdown/ViewCountDropDown';
+import { FormattedViewCountData, ViewCountData } from '@/types/apis/viewCount';
+import { ViewCountCategory } from '@/types/components/viewCount';
 import formatViewData from '@/utils/viewCount/formatViewData';
 import useClickOutside from '@/utils/viewCount/outsideClick';
-import { ViewCountData, FormattedViewCountData } from '@/types/apis/viewCount';
-import { ViewCountCategory } from '@/types/components/viewCount';
+import axios from 'axios';
+import ViewCountDropdown from './ViewCountDropdown/ViewCountDropDown';
 import * as S from './viewCount.style';
 
 const ViewCountButton = (): ReactElement => {

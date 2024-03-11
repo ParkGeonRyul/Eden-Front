@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import Auth from '@/components/Modal/AuthModal/Auth';
 import LinkButton from '@/components/common/Button/LinkButton';
 import * as I from '@/components/icons';
-import { Category } from '@/types/components/header';
-import { ComponentsType } from '@/types';
-import * as S from './header.style';
-import Auth from '@/components/Modal/AuthModal/Auth';
 import useModal from '@/hooks/useModal/usemodal';
+import { ComponentsType } from '@/types';
+import { Category } from '@/types/components/header';
+import * as S from './header.style';
 
 const Header = () => {
   const [isHeaderOpen, setIsHeaderOpen] = useState<boolean>(false);

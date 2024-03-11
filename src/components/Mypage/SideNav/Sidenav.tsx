@@ -1,7 +1,7 @@
+import React from 'react';
 import LinkButton from '@/components/common/Button/LinkButton';
 import * as I from '@/components/icons/index';
 import * as S from './sidenav.style';
-import React from 'react';
 
 const SideNav = () => {
   const renderNavCategory = () => {

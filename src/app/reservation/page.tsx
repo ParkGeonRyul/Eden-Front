@@ -1,8 +1,9 @@
 'use client';
-import PageTitle from '@/components/common/PageTitle/PageTitle';
-import Mainpage from '@/components/common/MainPage/MainPage';
-import CheckBox from '@/components/common/CheckBox/CheckBox';
+
 import CommonButton from '@/components/common/Button/CommonButton/CommonButton';
+import CheckBox from '@/components/common/CheckBox/CheckBox';
+import Mainpage from '@/components/common/MainPage/MainPage';
+import PageTitle from '@/components/common/PageTitle/PageTitle';
 import * as S from './reservation.style';
 
 const Reservation = () => {

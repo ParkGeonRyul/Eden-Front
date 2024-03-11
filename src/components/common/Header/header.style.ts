@@ -1,7 +1,7 @@
 'use client';
 
-import styled, { css } from 'styled-components';
 import Link from 'next/link';
+import styled, { css } from 'styled-components';
 
 interface HeaderProps {
   isHeaderOpen: boolean;

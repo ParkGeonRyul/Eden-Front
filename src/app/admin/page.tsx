@@ -1,10 +1,11 @@
 'use client';
+
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import * as S from './admin.style';
+import Label from '@/components/common/Label/AnswerStatusLabel/AnswerStatusLabel';
 import Mainpage from '@/components/common/MainPage/MainPage';
 import PageTitle from '@/components/common/PageTitle/PageTitle';
-import Label from '@/components/common/Label/AnswerStatusLabel/AnswerStatusLabel';
-import Link from 'next/link';
+import * as S from './admin.style';
 
 interface categoryList {
   category: string;

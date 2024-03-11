@@ -1,5 +1,5 @@
+import { ChangeEvent, ReactNode } from 'react';
 import * as S from './dropDown.style';
-import { ReactNode, ChangeEvent } from 'react';
 
 interface DropDownProps {
   label?: string;
