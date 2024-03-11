@@ -1,13 +1,14 @@
 'use client';
-import { useState, useEffect } from 'react';
+
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import CommonButton from '@/components/common/Button/CommonButton/CommonButton';
-import ProfileSection from '@/components/Mypage/Info/ProfileInfoSection/ProfileInfoSection';
-import BasicInfoSection from '@/components/Mypage/Info/BasicInfoSection/BasicInfoSection';
-import EmailAuthModal from '@/components/Modal/EmailAuthModal/EmailAuthModal';
 import AddressModal from '@/components/Modal/AddressModal/AddressModal';
-import useModal from '@/hooks/useModal/usemodal';
+import EmailAuthModal from '@/components/Modal/EmailAuthModal/EmailAuthModal';
+import BasicInfoSection from '@/components/Mypage/Info/BasicInfoSection/BasicInfoSection';
+import ProfileSection from '@/components/Mypage/Info/ProfileInfoSection/ProfileInfoSection';
 import { addActiveToBasicInfoData } from '@/components/Mypage/Info/basicInfoConstants';
+import CommonButton from '@/components/common/Button/CommonButton/CommonButton';
+import useModal from '@/hooks/useModal/usemodal';
 import { UserInfo } from '@/types/apis/userInfo';
 import * as S from './edit.style';
 

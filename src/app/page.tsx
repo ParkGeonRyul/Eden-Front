@@ -1,10 +1,11 @@
 'use client';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import * as S from './home.style';
-import { MainTitle } from '@/types/apis/mainTitle';
+
+import { useEffect, useState } from 'react';
 import { Typewriter } from 'react-simple-typewriter';
 import Mainpage from '@/components/common/MainPage/MainPage';
+import { MainTitle } from '@/types/apis/mainTitle';
+import axios from 'axios';
+import * as S from './home.style';
 
 export default function Home() {
   const [selectedLanguage, setSelectedLanguage] = useState<{

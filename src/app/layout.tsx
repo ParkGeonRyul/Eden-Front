@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
+import Header from '@/components/common/Header/Header';
 import StyledComponentsRegistry from '@/styles/registry';
 import ReactQueryProvider from './ReactQueryProvider';
-import Header from '@/components/common/Header/Header';
 
 interface Props {
   children: React.ReactNode;

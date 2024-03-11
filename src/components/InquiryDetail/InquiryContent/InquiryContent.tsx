@@ -1,6 +1,7 @@
 'use client';
-import * as S from './inquiryContent.style';
+
 import Label from '@/components/common/Label/AnswerStatusLabel/AnswerStatusLabel';
+import * as S from './inquiryContent.style';
 
 const InquiryContent = () => {
   return (

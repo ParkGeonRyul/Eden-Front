@@ -1,6 +1,6 @@
-import * as S from './footer.style';
 import LinkButton from '@/components/common/Button/LinkButton';
 import * as I from '@/components/icons/index';
+import * as S from './footer.style';
 
 const Footer = () => {
   const securityLinks = () => {

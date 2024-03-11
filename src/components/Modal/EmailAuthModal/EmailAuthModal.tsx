@@ -1,6 +1,6 @@
 import React from 'react';
-import CommonButton from '@/components/common/Button/CommonButton/CommonButton';
 import AuthButton from '@/components/common/Button/AuthButton/AuthButton';
+import CommonButton from '@/components/common/Button/CommonButton/CommonButton';
 import { ModalCloseButton } from '@/components/icons';
 import * as S from './emailAuthModal.style';
 

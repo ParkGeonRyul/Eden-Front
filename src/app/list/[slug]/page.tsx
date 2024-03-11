@@ -1,11 +1,12 @@
 'use client';
+
 import { useEffect, useState } from 'react';
-import axios from 'axios';
-import PageTitle from '@/components/common/PageTitle/PageTitle';
-import SearchBar from '@/components/common/SearchBar/SearchBar';
 import CommonButton from '@/components/common/Button/CommonButton/CommonButton';
+import PageTitle from '@/components/common/PageTitle/PageTitle';
 import PaginationButtons from '@/components/common/Pagination/Pagination';
-import { ListItem, ListData } from '@/types/apis/listItem';
+import SearchBar from '@/components/common/SearchBar/SearchBar';
+import { ListData, ListItem } from '@/types/apis/listItem';
+import axios from 'axios';
 import * as S from './list.style';
 
 const LIMIT_PER_PAGE = 5;

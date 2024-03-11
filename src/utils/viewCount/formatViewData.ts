@@ -1,4 +1,4 @@
-import { ViewCountData, FormattedViewCountData } from '@/types/apis/viewCount';
+import { FormattedViewCountData, ViewCountData } from '@/types/apis/viewCount';
 
 const formatNumber = (value: number): string => {
   if (value >= 1000000) {

@@ -1,9 +1,9 @@
-import PageTitle from '@/components/common/PageTitle/PageTitle';
 import DropDown from '@/components/common/DropDown/DropDown';
-import FormButton from './FormButton/FormButton';
-import FilesInputButton from './FilesInput/FilesInput';
+import PageTitle from '@/components/common/PageTitle/PageTitle';
 import { FormInputData } from '@/interfaces/listPage';
 import { FormType } from '@/types/components/formTypes';
+import FilesInputButton from './FilesInput/FilesInput';
+import FormButton from './FormButton/FormButton';
 import * as S from './formPage.style';
 
 interface FormPageProps {

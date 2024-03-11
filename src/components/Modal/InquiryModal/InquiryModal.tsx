@@ -1,7 +1,8 @@
 'use client';
+
 import React from 'react';
-import * as IM from './inquiryModal.style';
 import * as I from '@/components/icons';
+import * as IM from './inquiryModal.style';
 
 interface InquiryModalProps {
   close: () => void;

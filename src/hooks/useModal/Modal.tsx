@@ -1,5 +1,5 @@
-import React, { ReactNode, MouseEvent } from 'react';
-import { ModalWrap, ModalContainer } from './modal.style';
+import React, { MouseEvent, ReactNode } from 'react';
+import { ModalContainer, ModalWrap } from './modal.style';
 
 interface ModalProps {
   onClose: () => void;

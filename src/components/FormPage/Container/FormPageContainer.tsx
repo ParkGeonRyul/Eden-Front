@@ -1,16 +1,17 @@
 'use client';
+
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import FormPage from '@/components/FormPage/UI/FormPage';
-import { ListItemDetail, UploadFileData } from '@/types/apis/listItem';
-import { ListProps } from '@/interfaces/listPage';
-import { FormType } from '@/types/components/formTypes';
+import getCategoryTypeFromSlug from '@/components/FormPage/utils/getCategoryTypeFromSlug';
 import {
   isContentLengthValid,
   validateInputData,
 } from '@/components/FormPage/utils/postValid';
-import getCategoryTypeFromSlug from '@/components/FormPage/utils/getCategoryTypeFromSlug';
 import updateFormData from '@/components/FormPage/utils/updatdFormData';
+import { ListProps } from '@/interfaces/listPage';
+import { ListItemDetail, UploadFileData } from '@/types/apis/listItem';
+import { FormType } from '@/types/components/formTypes';
 
 interface FormPageContainerProps extends ListProps {
   type: FormType;

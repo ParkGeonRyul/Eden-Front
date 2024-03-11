@@ -1,15 +1,16 @@
 'use client';
+
 import { useEffect, useState } from 'react';
-import CategoryList from '@/components/CategoryList/CategoryList';
-import Mainpage from '@/components/common/MainPage/MainPage';
-import PageTitle from '@/components/common/PageTitle/PageTitle';
-import AnswerStatusLabel from '@/components/common/Label/AnswerStatusLabel/AnswerStatusLabel';
-import { adminListItem, adminListData } from '@/types/apis/adminListItem';
-import PaginationButtons from '@/components/common/Pagination/Pagination';
-import axios from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import CategoryList from '@/components/CategoryList/CategoryList';
 import CommonButton from '@/components/common/Button/CommonButton/CommonButton';
+import AnswerStatusLabel from '@/components/common/Label/AnswerStatusLabel/AnswerStatusLabel';
+import Mainpage from '@/components/common/MainPage/MainPage';
+import PageTitle from '@/components/common/PageTitle/PageTitle';
+import PaginationButtons from '@/components/common/Pagination/Pagination';
+import { adminListData, adminListItem } from '@/types/apis/adminListItem';
+import axios from 'axios';
 import * as S from './list.style';
 
 interface AdminListPageProps {

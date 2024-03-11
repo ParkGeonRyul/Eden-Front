@@ -1,9 +1,10 @@
 'use client';
+
+import Image from 'next/image';
+import * as S from '@/components/ListDetail/UI/listDetailPage.style';
 import ControlButton from '@/components/common/Button/ControlButton/ControlButton';
 import PageTitle from '@/components/common/PageTitle/PageTitle';
 import { ListItemDetail } from '@/types/apis/listItem';
-import * as S from '@/components/ListDetail/UI/listDetailPage.style';
-import Image from 'next/image';
 
 interface ListDetailPageProps {
   listItemDetail: ListItemDetail;

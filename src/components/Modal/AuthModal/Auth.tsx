@@ -1,10 +1,11 @@
 'use client';
+
 import React, { useState } from 'react';
-import * as S from './auth.styled';
+import useModal from '@/hooks/useModal/usemodal';
+import AgreeMent from './AgreeMent/AgreeMent';
 import SignIn from './SignIn/SignIn';
 import SignUp from './SignUp/SignUp';
-import AgreeMent from './AgreeMent/AgreeMent';
-import useModal from '@/hooks/useModal/usemodal';
+import * as S from './auth.styled';
 
 const INITIAL_MODAL = 'SignIn';
 

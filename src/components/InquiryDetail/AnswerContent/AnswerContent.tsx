@@ -1,7 +1,8 @@
 'use client';
-import * as S from './answerConten.style';
+
 import React, { useState } from 'react';
 import ControlButton from '@/components/common/Button/ControlButton/ControlButton';
+import * as S from './answerConten.style';
 
 const AnswerContent = () => {
   const [answerText, setAnswerText] = useState('');

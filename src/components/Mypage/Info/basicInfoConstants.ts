@@ -1,4 +1,4 @@
-import { UserInfo, BasicInfoData } from '@/types/apis/userInfo';
+import { BasicInfoData, UserInfo } from '@/types/apis/userInfo';
 
 interface BasicInfoItem {
   label: string;

@@ -1,6 +1,7 @@
 'use client';
-import styled from 'styled-components';
+
 import Link from 'next/link';
+import styled from 'styled-components';
 
 export const SideBar = styled.div`
   position: fixed;

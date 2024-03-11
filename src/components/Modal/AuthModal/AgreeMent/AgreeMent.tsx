@@ -1,9 +1,10 @@
 'use client';
+
 import React, { useState } from 'react';
-import * as S from './agreeMent.style';
-import * as I from '@/components/icons';
-import CheckBox from '@/components/common/CheckBox/CheckBox';
 import CommonButton from '@/components/common/Button/CommonButton/CommonButton';
+import CheckBox from '@/components/common/CheckBox/CheckBox';
+import * as I from '@/components/icons';
+import * as S from './agreeMent.style';
 
 interface AgreeMentProps {
   goToSignUp: () => void;

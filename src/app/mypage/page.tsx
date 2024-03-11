@@ -1,10 +1,11 @@
 'use client';
-import { useState, useEffect } from 'react';
+
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import CommonButton from '@/components/common/Button/CommonButton/CommonButton';
-import ProfileSection from '@/components/Mypage/Info/ProfileInfoSection/ProfileInfoSection';
 import BasicInfoSection from '@/components/Mypage/Info/BasicInfoSection/BasicInfoSection';
+import ProfileSection from '@/components/Mypage/Info/ProfileInfoSection/ProfileInfoSection';
 import { createBasicInfoData } from '@/components/Mypage/Info/basicInfoConstants';
+import CommonButton from '@/components/common/Button/CommonButton/CommonButton';
 import { UserInfo } from '@/types/apis/userInfo';
 import * as S from './info.style';
 
