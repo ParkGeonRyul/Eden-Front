@@ -2,9 +2,9 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import CommonButton from '@/components/common/Button/CommonButton/CommonButton';
-import ProfileSection from '@/components/Mypage/Info/ProfileInfoSection/ProfileInfoSection';
-import BasicInfoSection from '@/components/Mypage/Info/BasicInfoSection/BasicInfoSection';
-import { createBasicInfoData } from '@/components/Mypage/Info/basicInfoConstants';
+import ProfileSection from './_components/Info/ProfileInfoSection/ProfileInfoSection';
+import BasicInfoSection from './_components/Info/BasicInfoSection/BasicInfoSection';
+import { createBasicInfoData } from './_components/Info/basicInfoConstants';
 import { UserInfo } from '@/types/apis/userInfo';
 import * as S from './info.style';
 

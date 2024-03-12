@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
-import InquiryDetail from '@/components/Mypage/Inquiry/InquiryDetail/InquiryDetail';
-import InquiryListItem from '@/components/Mypage/Inquiry/InquiryList/InquiryListItem';
+import InquiryDetail from '../_components/Inquiry/InquiryDetail/InquiryDetail';
+import InquiryListItem from '../_components/Inquiry/InquiryList/InquiryListItem';
 import { InquiryPostData } from '@/types/apis/userInquiry';
 import * as S from './inquiry.style';
 
