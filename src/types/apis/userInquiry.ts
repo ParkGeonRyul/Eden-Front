@@ -1,21 +1,22 @@
-export interface AdminAnswer {
-  postId: number;
-  createdAt: string;
-  content: string;
-}
-
 export interface InquiryPost {
-  postId: number;
-  createdAt: string;
+  inquiryUniqueId: number;
+  title: string;
   content: string;
+  inquiryCreatedAt: string;
   answerStatus: boolean;
+  answer?: string;
+  answerUpdatedAt?: string;
 }
 
-export interface InquiryPostData {
-  postId: number;
-  postTitle: string;
-  createdAt: string;
-  content: string;
-  adminAnswer: AdminAnswer;
-  postList: InquiryPost[];
+export interface InquiryPostListItem {
+  inquiryUniqueId: string;
+  title: string;
+  answerStatus: boolean;
+  inquiryCreatedAt: string;
+}
+
+export interface InquiryPostList {
+  totalCount: number;
+  totalPage: number;
+  list: InquiryPostListItem[];
 }

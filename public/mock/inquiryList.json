@@ -1,0 +1,27 @@
+{
+  "data": {
+    "totalCount": 13,
+    "totalPage": 5,
+
+    "list": [
+      {
+        "inquiryUniqueId": "65cb63b577a30b008be55221",
+        "inquiryCreatedAt": "23.10.21",
+        "title": "title01",
+        "answerStatus": true
+      },
+      {
+        "inquiryUniqueId": "65cb54s577a30b008be55221",
+        "inquiryCreatedAt": "23.10.11",
+        "title": "title02",
+        "answerStatus": false
+      },
+      {
+        "inquiryUniqueId": "65cb63b577a30b008be55221",
+        "inquiryCreatedAt": "23.9.21",
+        "title": "title03",
+        "answerStatus": false
+      }
+    ]
+  }
+}
