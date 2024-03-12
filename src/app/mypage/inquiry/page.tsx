@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import InquiryDetail from '../_components/Inquiry/InquiryDetail/InquiryDetail';
-import InquiryListItem from '../_components/Inquiry/InquiryList/InquiryListItem';
+import InquiryList from '../_components/Inquiry/InquiryList/InquiryList';
 import { InquiryPost, InquiryPostList } from '@/types/apis/userInquiry';
 import * as S from './inquiry.style';
 
@@ -58,30 +58,7 @@ export default function Page() {
           </S.InquiryWrapper>
 
           {inquiryListItemData && (
-            <S.InquiryTable>
-              <S.TableHeader>
-                <S.TableTitle>전체보기</S.TableTitle>
-                <S.TableCount>
-                  {inquiryListItemData.totalCount}
-                  개의 문의
-                </S.TableCount>
-              </S.TableHeader>
-
-              <S.TableList>
-                <S.ListCategory>
-                  <S.ListTitle>글제목</S.ListTitle>
-                  <S.ListInfo>
-                    <S.ListState>답변여부</S.ListState>
-                    <S.ListDate>작성일</S.ListDate>
-                  </S.ListInfo>
-                </S.ListCategory>
-                {inquiryListItemData.list.map((item) => (
-                  <InquiryListItem
-                    key={item.inquiryUniqueId}
-                    item={item}></InquiryListItem>
-                ))}
-              </S.TableList>
-            </S.InquiryTable>
+            <InquiryList inquiryListItemData={inquiryListItemData} />
           )}
         </S.InquiryBox>
       )}
