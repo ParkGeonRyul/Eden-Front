@@ -2,13 +2,13 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import FormPage from '@/components/FormPage/UI/FormPage';
-import getCategoryTypeFromSlug from '@/components/FormPage/utils/getCategoryTypeFromSlug';
+import FormPage from '@/app/list/[slug]/_components/Formpage/UI/FormPage';
+import getCategoryTypeFromSlug from '@/app/list/[slug]/_components/Formpage/utils/getCategoryTypeFromSlug';
 import {
   isContentLengthValid,
   validateInputData,
-} from '@/components/FormPage/utils/postValid';
-import updateFormData from '@/components/FormPage/utils/updatdFormData';
+} from '@/app/list/[slug]/_components/Formpage/utils/postValid';
+import updateFormData from '@/app/list/[slug]/_components/Formpage/utils/updatdFormData';
 import { ListProps } from '@/interfaces/listPage';
 import { ListItemDetail, UploadFileData } from '@/types/apis/listItem';
 import { FormType } from '@/types/components/formTypes';

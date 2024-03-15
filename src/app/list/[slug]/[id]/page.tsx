@@ -30,7 +30,7 @@ export default async function ListDetail({ params }: ListDetailProps) {
     <ListDetailPage
       listItemDetail={listItemDetail}
       isAdmin={isAdmin}
-      slug={params.slug}
+      category={params.slug}
       deletePost={deletePost}
     />
   );
