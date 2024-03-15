@@ -1,4 +1,4 @@
-import FormPageContainer from '@/components/FormPage/Container/FormPageContainer';
+import FormPageContainer from '@/app/list/[slug]/_components/Formpage/Container/FormPageContainer';
 import { ListProps } from '@/interfaces/listPage';
 
 export default function PostsPage({ params }: ListProps) {

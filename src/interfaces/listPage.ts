@@ -13,5 +13,4 @@ export interface FormInputData {
 
 export interface UploadFileData {
   fileUrl: string;
-  _id: string;
 }

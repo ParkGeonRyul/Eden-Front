@@ -9,19 +9,19 @@ import { ListItemDetail } from '@/types/apis/listItem';
 interface ListDetailPageProps {
   listItemDetail: ListItemDetail;
   isAdmin: boolean;
-  slug: string;
+  category: string;
   deletePost: () => void;
 }
 
 export default function ListDetailPage({
   listItemDetail,
   isAdmin,
-  slug,
+  category,
   deletePost,
 }: ListDetailPageProps) {
   return (
     <>
-      <PageTitle>{slug.toUpperCase()}</PageTitle>
+      <PageTitle>{category.toUpperCase()}</PageTitle>
       <S.ListDetailContainer>
         <S.HeaderContainer>
           <S.ListHeader>
@@ -30,7 +30,7 @@ export default function ListDetailPage({
               {isAdmin && (
                 <S.ButtonBox>
                   <S.StyledLink
-                    href={`/list/${slug}/${listItemDetail.postId}/edit`}>
+                    href={`/list/${category}/${listItemDetail.postId}/edit`}>
                     <ControlButton type="edit"></ControlButton>
                   </S.StyledLink>
                   <ControlButton
