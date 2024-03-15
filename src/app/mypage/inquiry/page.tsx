@@ -5,7 +5,13 @@ import InquiryList from '../_components/Inquiry/InquiryList/InquiryList';
 import { InquiryPost, InquiryPostList } from '@/types/apis/userInquiry';
 import * as S from './inquiry.style';
 
-export default function Page() {
+export default function Page({
+  searchParams,
+}: {
+  searchParams: {
+    [key: string]: string | string[] | undefined;
+  };
+}) {
   const [inquiryData, setInquiryData] = useState<InquiryPost | null>(null);
   const [inquiryListItemData, setInquiryListItemData] =
     useState<InquiryPostList | null>(null);
@@ -24,13 +30,19 @@ export default function Page() {
   useEffect(() => {
     //TODO react-query로 변경 및 api 분리
     const fetchInquiryList = async () => {
-      const inquiryListItemData = await fetch('/mock/inquiryList.json');
+      const inquiryListItemData = await fetch(
+        `/mock/inquiryList${searchParams.page}.json`,
+      );
       const result = await inquiryListItemData.json();
       setInquiryListItemData(result.data);
     };
 
     fetchInquiryList();
-  }, []);
+
+    console.log('나 통신했어요!');
+  }, [searchParams.page]);
+
+  console.log('page 랜더링!');
 
   return (
     <S.InquiryContainer>
@@ -38,7 +50,7 @@ export default function Page() {
         <S.NotInquiry>문의한 글이 없어요.</S.NotInquiry>
       ) : (
         <S.InquiryBox>
-          <S.InquiryWrapper>
+          <S.InquiryWrapper key={inquiryData.inquiryUniqueId}>
             <InquiryDetail inquiry={inquiryData}></InquiryDetail>
             {inquiryData.answerStatus ? (
               <S.ReviewContainer>
