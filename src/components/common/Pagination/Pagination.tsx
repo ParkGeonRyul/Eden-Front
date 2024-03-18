@@ -9,13 +9,13 @@ const BUTTONS_PER_PAGE = 5;
 interface PaginationButtonsProps {
   totalPages: number;
   currentPage: number;
-  setCurrentPage: (state: number) => void;
+  handlePageChange: (newPage: number) => void;
 }
 
 function PaginationButtons({
   totalPages,
   currentPage,
-  setCurrentPage,
+  handlePageChange,
 }: PaginationButtonsProps) {
   const [currentPageGroupIndex, setCurrentPageGroupIndex] = useState(0);
 
@@ -43,7 +43,7 @@ function PaginationButtons({
           <S.PageButton
             key={number}
             isCurrent={number === currentPage}
-            onClick={() => setCurrentPage(number)}>
+            onClick={() => handlePageChange(number)}>
             {number}
           </S.PageButton>
         ))}

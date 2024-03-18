@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import CommonButton from '@/components/common/Button/CommonButton/CommonButton';
 import PageTitle from '@/components/common/PageTitle/PageTitle';
 import PaginationButtons from '@/components/common/Pagination/Pagination';
@@ -21,9 +22,20 @@ export default function ListPage({ params }: ListPageProps) {
   const [isAdmin, setIsAdmiin] = useState(true);
   const [listItems, setListItems] = useState<ListItem[]>([]);
   const [totalPages, setTotalPages] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1);
+  // const [currentPage, setCurrentPage] = useState(1);
 
+  // const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const router = useRouter();
   const ListCategory = params.slug;
+
+  const pageQueryParam = searchParams.get('page');
+
+  const currentPage = pageQueryParam ? parseInt(pageQueryParam, 10) : 1;
+
+  const handlePageChange = (newPage: number) => {
+    router.push(`/list/${ListCategory}?page=${newPage}`, { scroll: false });
+  };
 
   useEffect(() => {
     //TODO api 분리 후 slug에 따라 다이나믹 통신하기!
@@ -66,6 +78,8 @@ export default function ListPage({ params }: ListPageProps) {
     ));
   };
 
+  console.log('랜더링됐다!');
+
   return (
     <>
       <PageTitle>{ListCategory.toUpperCase()}</PageTitle>
@@ -82,7 +96,7 @@ export default function ListPage({ params }: ListPageProps) {
       <PaginationButtons
         totalPages={totalPages}
         currentPage={currentPage}
-        setCurrentPage={setCurrentPage}></PaginationButtons>
+        handlePageChange={handlePageChange}></PaginationButtons>
 
       {isAdmin && (
         <S.ButtonContainer>
