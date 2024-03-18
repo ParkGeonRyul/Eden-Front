@@ -21,6 +21,7 @@ export default function ListPage({ params }: ListPageProps) {
   const [isAdmin, setIsAdmiin] = useState(true);
   const [listItems, setListItems] = useState<ListItem[]>([]);
   const [totalPages, setTotalPages] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const ListCategory = params.slug;
 
@@ -28,11 +29,15 @@ export default function ListPage({ params }: ListPageProps) {
     //TODO api 분리 후 slug에 따라 다이나믹 통신하기!
     const fetchData = async () => {
       try {
-        const params = { limit: LIMIT_PER_PAGE };
+        const params = { limit: LIMIT_PER_PAGE, page: currentPage };
+        console.log('currentpage: ', currentPage);
 
-        const response = await axios.get(`/mock/${ListCategory}ListItem.json`, {
-          params,
-        });
+        const response = await axios.get(
+          `/mock/${ListCategory}ListItem${currentPage}.json`,
+          {
+            params,
+          },
+        );
 
         const result: { data: ListData } = response.data;
         const { list, totalPage } = result.data;
@@ -45,7 +50,7 @@ export default function ListPage({ params }: ListPageProps) {
     };
 
     fetchData();
-  }, []);
+  }, [ListCategory, currentPage]);
 
   const renderingListItems = () => {
     return listItems.map((item, index) => (
@@ -74,7 +79,10 @@ export default function ListPage({ params }: ListPageProps) {
         </S.ListCategory>
         {renderingListItems()}
       </S.Section>
-      <PaginationButtons totalPages={totalPages}></PaginationButtons>
+      <PaginationButtons
+        totalPages={totalPages}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}></PaginationButtons>
 
       {isAdmin && (
         <S.ButtonContainer>

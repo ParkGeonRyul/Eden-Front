@@ -1,0 +1,33 @@
+{
+  "data": {
+    "totalCount": 35,
+    "totalPage": 7,
+    "list": [
+      {
+        "title": "2",
+        "createdAt": "24.02.27",
+        "postId": 14
+      },
+      {
+        "title": "22",
+        "createdAt": "24.02.27",
+        "postId": 13
+      },
+      {
+        "title": "222",
+        "createdAt": "24.02.27",
+        "postId": 12
+      },
+      {
+        "title": "2222",
+        "createdAt": "24.02.27",
+        "postId": 11
+      },
+      {
+        "title": "222222",
+        "createdAt": "24.02.27",
+        "postId": 11
+      }
+    ]
+  }
+}

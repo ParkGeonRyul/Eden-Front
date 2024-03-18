@@ -34,10 +34,7 @@ export const PageButton = styled.li<{ isCurrent: boolean }>`
   padding: 8px 0px;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 
   ${({ isCurrent }) => (isCurrent ? activeStyles : inactiveStyles)}
-`;
-
-export const StyledLink = styled(Link)`
-  cursor: pointer;
 `;
