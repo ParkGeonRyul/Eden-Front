@@ -27,9 +27,12 @@ const AdminList = ({ params }: AdminListPageProps) => {
 
   const ListCategory = params.slug;
 
+  // searchParams를 사용해서 url로부터 page 얻기
   const pageQueryParam = searchParams.get('page');
+  // currentPage에 page number 형태로 할당
   const currentPage = pageQueryParam ? parseInt(pageQueryParam, 10) : 1;
 
+  // pagination button 클릭시 실행되는 함수
   const handlePageChange = (newPage: number) => {
     router.push(`/admin/${ListCategory}?page=${newPage}`, { scroll: false });
   };
@@ -45,7 +48,7 @@ const AdminList = ({ params }: AdminListPageProps) => {
           `/mock/admin${params.slug}ListItem.json`,
         );
         console.log(response.data);
-        setAdminListItems(response.data.data);
+        setAdminListItems(response.data.list);
         setTotalPages(response.data.totalPages);
       } catch (error) {
         console.error('데이터를 불러오는 중 에러가 발생했습니다:', error);
