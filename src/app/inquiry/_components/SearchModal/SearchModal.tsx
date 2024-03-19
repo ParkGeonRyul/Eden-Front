@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import CommonButton from '@/components/common/Button/CommonButton/CommonButton';
+import axios from 'axios';
 import * as S from './searchModal.style';
 
 interface SearchModalProps {
@@ -16,11 +17,31 @@ const SearchModal = ({ close }: SearchModalProps) => {
     inquiryNumber: '',
   });
 
-  const handleInputChange = (fieldName: string, value: string) => {
-    console.log(`${fieldName}: ${value}`);
-    setFormData((prevData) => ({
-      ...prevData,
-      [fieldName]: value,
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      try {
+        const response = await axios.get('엔드포인튼');
+        const { lastName, firstName, email } = response.data;
+
+        setFormData((prev) => ({
+          ...prev,
+          userLastName: lastName,
+          userFirstName: firstName,
+          email: email,
+        }));
+      } catch (error) {
+        console.error('사용자 정보를 가져오는 중 오류.', error);
+      }
+    };
+
+    fetchUserInfo();
+  }, []);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
     }));
   };
 
@@ -49,20 +70,18 @@ const SearchModal = ({ close }: SearchModalProps) => {
             <S.InputTitle>성</S.InputTitle>
             <S.ModalInput
               name="userLastName"
+              value={formData.userLastName}
               placeholder="성"
-              onChange={(e) =>
-                handleInputChange('userLastName', e.target.value)
-              }
+              onChange={handleInputChange}
             />
           </S.NameContainer>
           <S.NameContainer>
             <S.InputTitle>이름</S.InputTitle>
             <S.ModalInput
               name="userFirstName"
+              value={formData.userFirstName}
               placeholder="이름"
-              onChange={(e) =>
-                handleInputChange('userFirstName', e.target.value)
-              }
+              onChange={handleInputChange}
             />
           </S.NameContainer>
         </S.FullName>
@@ -70,14 +89,16 @@ const SearchModal = ({ close }: SearchModalProps) => {
         <S.InputTitle>이메일</S.InputTitle>
         <S.ModalInput
           name="email"
+          value={formData.email}
           placeholder="이메일"
-          onChange={(e) => handleInputChange('email', e.target.value)}
+          onChange={handleInputChange}
         />
         <S.InputTitle>문의번호</S.InputTitle>
         <S.ModalInput
           name="inquiryNumber"
+          value={formData.inquiryNumber}
           placeholder="문의번호"
-          onChange={(e) => handleInputChange('inquiryNumber', e.target.value)}
+          onChange={handleInputChange}
         />
 
         <CommonButton
