@@ -9,6 +9,7 @@ import * as S from './inquiry.style';
 export default function Page() {
   const [inquiryData, setInquiryData] = useState<InquiryPost | null>(null);
   const [inquiryUniqueId, setInquiryUniqueId] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     //TODO react-query로 변경 및 api 분리
@@ -24,6 +25,7 @@ export default function Page() {
         const result = await inquiryData.json();
         setInquiryData(result);
         setInquiryUniqueId(result.inquiryUniqueId);
+        setLoading(false);
       } catch (error) {
         console.error('Failed to fetch data:', error);
       }
@@ -32,7 +34,9 @@ export default function Page() {
     fetchInquiry();
   }, [inquiryUniqueId]);
 
-  console.log('inquiryUniqueId', inquiryUniqueId);
+  if (loading) {
+    return;
+  }
 
   return (
     <S.InquiryContainer>
