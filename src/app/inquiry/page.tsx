@@ -1,8 +1,6 @@
 'use client';
 
-import { useState } from 'react';
-import InquiryModal from '@/components/Modal/InquiryModal/InquiryModal';
-import SearchModal from '@/components/Modal/SearchModal/SearchModal';
+import { useEffect, useState } from 'react';
 import CommonButton from '@/components/common/Button/CommonButton/CommonButton';
 import CheckBox from '@/components/common/CheckBox/CheckBox';
 import DropDown from '@/components/common/DropDown/DropDown';
@@ -13,6 +11,9 @@ import {
   isContentLengthValid,
   validateInquiryData,
 } from '@/utils/inquiry/validateInquiryData';
+import axios from 'axios';
+import InquiryModal from './_components/InquiryModal/InquiryModal';
+import SearchModal from './_components/SearchModal/SearchModal';
 import * as S from './inquiry.style';
 
 export default function Inquiry() {
@@ -20,6 +21,7 @@ export default function Inquiry() {
 
   const [isInquiry, setIsInquiry] = useState(false);
   const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
+  const [isFormValid, setIsFormValid] = useState(false);
 
   const [formData, setFormData] = useState({
     selectedType: '',
@@ -32,18 +34,28 @@ export default function Inquiry() {
     isCustomDomain: true,
   });
 
-  const handleButtonClick = (buttonType: 'inquiry' | 'search') => {
-    // 조회하기 버튼을 눌렀을 때의 로직
+  useEffect(() => {
+    // 추가: 폼 데이터가 변경될 때마다 유효성 검사 실행
+    setIsFormValid(validateInquiryData({ ...formData, isCheckboxChecked }));
+  }, [formData, isCheckboxChecked]);
+
+  const handleButtonClick = async (buttonType: 'inquiry' | 'search') => {
     if (buttonType === 'search') {
       setIsInquiry(false);
-      open(); // 모달 열기
-      console.log(`조회하기 버튼을 눌렀을 때의 모달 내용`);
-    }
-    // 문의하기 버튼을 눌렀을 때의 로직
-    else if (buttonType === 'inquiry') {
-      if (validateInquiryData({ ...formData, isCheckboxChecked })) {
-        setIsInquiry(true);
-        open();
+      open();
+    } else if (buttonType === 'inquiry') {
+      if (isFormValid) {
+        try {
+          const response = await axios.post('엔드포인트', {
+            ...formData,
+          });
+          console.log('Inquiry successfully:', response.data);
+          open();
+          setIsInquiry(true);
+        } catch (error) {
+          console.error('Error inquiry:', error);
+          alert('문의하기 요청 중 오류가 발생했습니다.');
+        }
       } else {
         alert(
           '문의유형과 제목, 내용, 이메일 아이디, 이메일을 모두 입력해주세요.',
@@ -106,11 +118,13 @@ export default function Inquiry() {
                     handleInputChange('selectedType', selectedType)
                   }>
                   <option value="">유형 선택</option>
-                  <option value="1">PET</option>
-                  <option value="2">CHILD</option>
-                  <option value="3">SPORTS</option>
-                  <option value="4">FAMILY</option>
-                  <option value="5">기타</option>
+                  <option value="0">Notice board</option>
+                  <option value="1">Family</option>
+                  <option value="2">Children</option>
+                  <option value="3">Academics</option>
+                  <option value="4">Sports</option>
+                  <option value="5">Pets</option>
+                  <option value="6">E-books</option>
                 </DropDown>
               </S.InquiryDisplay>
               <S.InquiryDisplay>
@@ -210,7 +224,7 @@ export default function Inquiry() {
           <S.InquiryButton>
             <CommonButton
               type="primary"
-              isActive={true}
+              isActive={isFormValid}
               onClick={() => handleButtonClick('inquiry')}>
               문의하기
             </CommonButton>
