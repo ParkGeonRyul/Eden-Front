@@ -8,17 +8,28 @@ import * as S from './inquiry.style';
 
 export default function Page() {
   const [inquiryData, setInquiryData] = useState<InquiryPost | null>(null);
+  const [inquiryUniqueId, setInquiryUniqueId] = useState('');
 
   useEffect(() => {
     //TODO react-query로 변경 및 api 분리
     const fetchInquiry = async () => {
-      const inquiryData = await fetch('/mock/userInquiry.json');
-      const result = await inquiryData.json();
-      setInquiryData(result);
+      try {
+        const inquiryData = await fetch(
+          // `/mypage/inquiry?inquiryId=${inquiryUniqueId}`
+          '/mock/userInquiry.json',
+          {
+            credentials: 'include',
+          },
+        );
+        const result = await inquiryData.json();
+        setInquiryData(result);
+      } catch (error) {
+        console.error('Failed to fetch data:', error);
+      }
     };
 
     fetchInquiry();
-  }, []);
+  }, [inquiryUniqueId]);
 
   return (
     <S.InquiryContainer>

@@ -6,6 +6,8 @@ import { InquiryPostList } from '@/types/apis/userInquiry';
 import InquiryListItem from './InquiryListItem/InquiryListItem';
 import * as S from './inquiryList.style';
 
+const LIMIT_PER_PAGE = 3;
+
 export default function InquiryList() {
   const [currentPage, setCurrentPage] = useState(1);
   const [inquiryListItemData, setInquiryListItemData] =
@@ -20,7 +22,11 @@ export default function InquiryList() {
     //TODO react-query로 변경 및 api 분리  page,limit 추가
     const fetchInquiryList = async () => {
       const fetchInquiryList = await fetch(
+        // `/mypage/inquiry-list?page={currentPage}&limit={LIMIT_PER_PAGE}`
         `/mock/inquiryList${currentPage}.json`,
+        {
+          headers: { contentType: 'application/json' },
+        },
       );
       const result = await fetchInquiryList.json();
       setInquiryListItemData(result.data);
@@ -32,6 +38,7 @@ export default function InquiryList() {
   if (inquiryListItemData === null) {
     return null;
   }
+
   return (
     <>
       <S.InquiryListContainer>

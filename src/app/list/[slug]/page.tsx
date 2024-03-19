@@ -36,12 +36,18 @@ export default function ListPage({ params }: ListPageProps) {
 
   useEffect(() => {
     //TODO api 분리 후 slug에 따라 다이나믹 통신하기!
+    // cokkie 설정
     const fetchData = async () => {
       try {
-        const params = { limit: LIMIT_PER_PAGE, page: currentPage };
-        console.log('currentpage: ', currentPage);
+        const params = {
+          limit: LIMIT_PER_PAGE,
+          page: currentPage,
+          category: ListCategory,
+          search: '',
+        };
 
         const response = await axios.get(
+          // ` /list `,
           `/mock/${ListCategory}ListItem${currentPage}.json`,
           {
             params,
@@ -74,8 +80,6 @@ export default function ListPage({ params }: ListPageProps) {
       </S.ListItem>
     ));
   };
-
-  console.log('랜더링됐다!');
 
   return (
     <>
