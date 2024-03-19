@@ -1,45 +1,42 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { InquiryPost, InquiryPostList } from '@/types/apis/userInquiry';
+import { InquiryPost } from '@/types/apis/userInquiry';
 import InquiryDetail from '../_components/Inquiry/InquiryDetail/InquiryDetail';
 import InquiryList from '../_components/Inquiry/InquiryList/InquiryList';
 import * as S from './inquiry.style';
 
-export default function Page({
-  searchParams,
-}: {
-  searchParams: {
-    [key: string]: string | string[] | undefined;
-  };
-}) {
+export default function Page() {
   const [inquiryData, setInquiryData] = useState<InquiryPost | null>(null);
-  const [inquiryListItemData, setInquiryListItemData] =
-    useState<InquiryPostList | null>(null);
+  const [inquiryUniqueId, setInquiryUniqueId] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     //TODO react-query로 변경 및 api 분리
     const fetchInquiry = async () => {
-      const inquiryData = await fetch('/mock/userInquiry.json');
-      const result = await inquiryData.json();
-      setInquiryData(result);
+      try {
+        const inquiryData = await fetch(
+          // `/mypage/inquiry?inquiryId=${inquiryUniqueId}`
+          `/mock/userInquiry${inquiryUniqueId}.json`,
+          {
+            credentials: 'include',
+          },
+        );
+        const result = await inquiryData.json();
+        setInquiryData(result);
+        setInquiryUniqueId(result.inquiryUniqueId);
+        setLoading(false);
+      } catch (error) {
+        console.error('Failed to fetch data:', error);
+      }
     };
 
     fetchInquiry();
-  }, []);
+  }, [inquiryUniqueId]);
 
-  useEffect(() => {
-    //TODO react-query로 변경 및 api 분리
-    const fetchInquiryList = async () => {
-      const inquiryListItemData = await fetch(
-        `/mock/inquiryList${searchParams.page}.json`,
-      );
-      const result = await inquiryListItemData.json();
-      setInquiryListItemData(result.data);
-    };
-
-    fetchInquiryList();
-  }, [searchParams.page]);
+  if (loading) {
+    return;
+  }
 
   return (
     <S.InquiryContainer>
@@ -66,9 +63,7 @@ export default function Page({
             )}
           </S.InquiryWrapper>
 
-          {inquiryListItemData && (
-            <InquiryList inquiryListItemData={inquiryListItemData} />
-          )}
+          <InquiryList setInquiryUniqueId={setInquiryUniqueId} />
         </S.InquiryBox>
       )}
     </S.InquiryContainer>

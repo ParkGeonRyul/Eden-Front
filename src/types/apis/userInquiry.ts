@@ -1,5 +1,5 @@
 export interface InquiryPost {
-  inquiryUniqueId: number;
+  inquiryUniqueId: string;
   title: string;
   content: string;
   inquiryCreatedAt: string;

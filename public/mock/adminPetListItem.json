@@ -1,5 +1,5 @@
 {
-  "data": [
+  "list": [
     {
       "postId": 1,
       "title": "pet01sdfsdfsdfsdfsdfsdafasdf",
@@ -58,6 +58,5 @@
     }
   ],
   "totalItems": 100,
-  "totalPages": 20,
-  "currentPage": 1
+  "totalPages": 20
 }

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import CommonButton from '@/components/common/Button/CommonButton/CommonButton';
 import PageTitle from '@/components/common/PageTitle/PageTitle';
 import PaginationButtons from '@/components/common/Pagination/Pagination';
@@ -22,17 +23,36 @@ export default function ListPage({ params }: ListPageProps) {
   const [listItems, setListItems] = useState<ListItem[]>([]);
   const [totalPages, setTotalPages] = useState(0);
 
+  const searchParams = useSearchParams();
+  const router = useRouter();
   const ListCategory = params.slug;
+
+  const pageQueryParam = searchParams.get('page');
+  const currentPage = pageQueryParam ? parseInt(pageQueryParam, 10) : 1;
+
+  const handlePageChange = (newPage: number) => {
+    router.push(`/list/${ListCategory}?page=${newPage}`, { scroll: false });
+  };
 
   useEffect(() => {
     //TODO api 분리 후 slug에 따라 다이나믹 통신하기!
+    // cokkie 설정
     const fetchData = async () => {
       try {
-        const params = { limit: LIMIT_PER_PAGE };
+        const params = {
+          limit: LIMIT_PER_PAGE,
+          page: currentPage,
+          category: ListCategory,
+          search: '',
+        };
 
-        const response = await axios.get(`/mock/${ListCategory}ListItem.json`, {
-          params,
-        });
+        const response = await axios.get(
+          // ` /list `,
+          `/mock/${ListCategory}ListItem${currentPage}.json`,
+          {
+            params,
+          },
+        );
 
         const result: { data: ListData } = response.data;
         const { list, totalPage } = result.data;
@@ -45,7 +65,7 @@ export default function ListPage({ params }: ListPageProps) {
     };
 
     fetchData();
-  }, []);
+  }, [ListCategory, currentPage]);
 
   const renderingListItems = () => {
     return listItems.map((item, index) => (
@@ -74,7 +94,10 @@ export default function ListPage({ params }: ListPageProps) {
         </S.ListCategory>
         {renderingListItems()}
       </S.Section>
-      <PaginationButtons totalPages={totalPages}></PaginationButtons>
+      <PaginationButtons
+        totalPages={totalPages}
+        currentPage={currentPage}
+        handlePageChange={handlePageChange}></PaginationButtons>
 
       {isAdmin && (
         <S.ButtonContainer>

@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { usePathname, useSearchParams } from 'next/navigation';
 import * as I from '@/components/icons/index';
 import * as S from './pagination.style';
 
@@ -9,22 +8,18 @@ const BUTTONS_PER_PAGE = 5;
 
 interface PaginationButtonsProps {
   totalPages: number;
+  currentPage: number;
+  handlePageChange: (newPage: number) => void;
 }
 
-function PaginationButtons({ totalPages }: PaginationButtonsProps) {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
+function PaginationButtons({
+  totalPages,
+  currentPage,
+  handlePageChange,
+}: PaginationButtonsProps) {
   const [currentPageGroupIndex, setCurrentPageGroupIndex] = useState(0);
 
   const lastPageGroupIndex = Math.ceil(totalPages / BUTTONS_PER_PAGE) - 1;
-
-  const currentPage = Number(searchParams.get('page')) || 1;
-
-  const createPageURL = (pageNumber: number | string) => {
-    const params = new URLSearchParams(searchParams);
-    params.set('page', pageNumber.toString());
-    return `${pathname}?${params.toString()}`;
-  };
 
   const buttons = Array.from(
     {
@@ -45,11 +40,12 @@ function PaginationButtons({ totalPages }: PaginationButtonsProps) {
       )}
       <S.Pagination>
         {buttons.map((number) => (
-          <S.StyledLink href={createPageURL(number)} key={number}>
-            <S.PageButton isCurrent={number === currentPage}>
-              {number}
-            </S.PageButton>
-          </S.StyledLink>
+          <S.PageButton
+            key={number}
+            isCurrent={number === currentPage}
+            onClick={() => handlePageChange(number)}>
+            {number}
+          </S.PageButton>
         ))}
       </S.Pagination>
       {currentPageGroupIndex < lastPageGroupIndex && (
