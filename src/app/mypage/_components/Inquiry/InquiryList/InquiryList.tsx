@@ -8,13 +8,16 @@ import * as S from './inquiryList.style';
 
 const LIMIT_PER_PAGE = 3;
 
-export default function InquiryList() {
+interface InquiryListProps {
+  setInquiryUniqueId: (state: string) => void;
+}
+
+export default function InquiryList({ setInquiryUniqueId }: InquiryListProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [inquiryListItemData, setInquiryListItemData] =
     useState<InquiryPostList | null>(null);
 
   const handlePageChange = (newPage: number) => {
-    console.log('바꾸는 통신', newPage);
     setCurrentPage(newPage);
   };
 
@@ -62,7 +65,8 @@ export default function InquiryList() {
             {inquiryListItemData.list.map((item) => (
               <InquiryListItem
                 key={item.inquiryUniqueId}
-                item={item}></InquiryListItem>
+                item={item}
+                setInquiryUniqueId={setInquiryUniqueId}></InquiryListItem>
             ))}
           </S.TableList>
         </S.InquiryTable>

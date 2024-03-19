@@ -16,13 +16,14 @@ export default function Page() {
       try {
         const inquiryData = await fetch(
           // `/mypage/inquiry?inquiryId=${inquiryUniqueId}`
-          '/mock/userInquiry.json',
+          `/mock/userInquiry${inquiryUniqueId}.json`,
           {
             credentials: 'include',
           },
         );
         const result = await inquiryData.json();
         setInquiryData(result);
+        setInquiryUniqueId(result.inquiryUniqueId);
       } catch (error) {
         console.error('Failed to fetch data:', error);
       }
@@ -30,6 +31,8 @@ export default function Page() {
 
     fetchInquiry();
   }, [inquiryUniqueId]);
+
+  console.log('inquiryUniqueId', inquiryUniqueId);
 
   return (
     <S.InquiryContainer>
@@ -56,7 +59,7 @@ export default function Page() {
             )}
           </S.InquiryWrapper>
 
-          <InquiryList />
+          <InquiryList setInquiryUniqueId={setInquiryUniqueId} />
         </S.InquiryBox>
       )}
     </S.InquiryContainer>
