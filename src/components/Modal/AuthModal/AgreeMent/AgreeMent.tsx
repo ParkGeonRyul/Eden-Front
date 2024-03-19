@@ -7,8 +7,9 @@ import * as I from '@/components/icons';
 import * as S from './agreeMent.style';
 
 interface AgreeMentProps {
-  goToSignUp: () => void;
   close: () => void;
+  goToPrevious: () => void;
+  goToSignUp: () => void;
 }
 
 interface AgreeItem {
@@ -16,7 +17,7 @@ interface AgreeItem {
   itemRequired: boolean;
 }
 
-const AgreeMent = ({ goToSignUp, close }: AgreeMentProps) => {
+const AgreeMent = ({ close, goToSignUp, goToPrevious }: AgreeMentProps) => {
   const agreeItemList = [
     { itemName: '회원가입 약관 동의', itemRequired: true },
     { itemName: '개인정보 수집 동의', itemRequired: false },
@@ -86,6 +87,7 @@ const AgreeMent = ({ goToSignUp, close }: AgreeMentProps) => {
                 <S.ItemRequired required={item.itemRequired}>
                   {item.itemRequired ? '(필수)' : '(선택)'}
                 </S.ItemRequired>
+                <S.ViewTerms>약관보기</S.ViewTerms>
               </S.ItemValue>
               <S.CheckBoxContainer>
                 <CheckBox
@@ -98,13 +100,18 @@ const AgreeMent = ({ goToSignUp, close }: AgreeMentProps) => {
           ))}
 
           <S.ButtonContainer>
-            <CommonButton type="secondary" isActive={false}>
+            <CommonButton
+              type="secondary"
+              isActive={true}
+              onClick={goToPrevious}
+              wide>
               이전
             </CommonButton>
             <CommonButton
               type="primary"
               isActive={nextBtnIsActive()}
-              onClick={nextBtnIsActive() ? goToSignUp : nextBtnAgree}>
+              onClick={nextBtnIsActive() ? goToSignUp : nextBtnAgree}
+              wide>
               다음
             </CommonButton>
           </S.ButtonContainer>

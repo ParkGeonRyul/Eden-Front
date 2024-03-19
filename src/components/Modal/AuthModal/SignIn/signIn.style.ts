@@ -10,7 +10,6 @@ export const BackGround = styled.div`
   padding: 50px;
   position: relative;
   background-color: white;
-  border: 1px solid #4f4f4f;
 `;
 
 export const CloseBtn = styled.button`
