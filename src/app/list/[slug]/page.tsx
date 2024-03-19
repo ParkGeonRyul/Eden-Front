@@ -22,15 +22,12 @@ export default function ListPage({ params }: ListPageProps) {
   const [isAdmin, setIsAdmiin] = useState(true);
   const [listItems, setListItems] = useState<ListItem[]>([]);
   const [totalPages, setTotalPages] = useState(0);
-  // const [currentPage, setCurrentPage] = useState(1);
 
-  // const pathname = usePathname();
   const searchParams = useSearchParams();
   const router = useRouter();
   const ListCategory = params.slug;
 
   const pageQueryParam = searchParams.get('page');
-
   const currentPage = pageQueryParam ? parseInt(pageQueryParam, 10) : 1;
 
   const handlePageChange = (newPage: number) => {

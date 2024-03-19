@@ -1,15 +1,37 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import PaginationButtons from '@/components/common/Pagination/Pagination';
 import { InquiryPostList } from '@/types/apis/userInquiry';
 import InquiryListItem from './InquiryListItem/InquiryListItem';
 import * as S from './inquiryList.style';
 
-interface InquiryListProps {
-  inquiryListItemData: InquiryPostList;
-}
+export default function InquiryList() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [inquiryListItemData, setInquiryListItemData] =
+    useState<InquiryPostList | null>(null);
 
-export default function InquiryList({ inquiryListItemData }: InquiryListProps) {
+  const handlePageChange = (newPage: number) => {
+    console.log('바꾸는 통신', newPage);
+    setCurrentPage(newPage);
+  };
+
+  useEffect(() => {
+    //TODO react-query로 변경 및 api 분리  page,limit 추가
+    const fetchInquiryList = async () => {
+      const fetchInquiryList = await fetch(
+        `/mock/inquiryList${currentPage}.json`,
+      );
+      const result = await fetchInquiryList.json();
+      setInquiryListItemData(result.data);
+    };
+
+    fetchInquiryList();
+  }, [currentPage]);
+
+  if (inquiryListItemData === null) {
+    return null;
+  }
   return (
     <>
       <S.InquiryListContainer>
@@ -37,7 +59,11 @@ export default function InquiryList({ inquiryListItemData }: InquiryListProps) {
             ))}
           </S.TableList>
         </S.InquiryTable>
-        <PaginationButtons totalPages={inquiryListItemData.totalPage} />
+        <PaginationButtons
+          totalPages={inquiryListItemData.totalPage}
+          currentPage={currentPage}
+          handlePageChange={handlePageChange}
+        />
       </S.InquiryListContainer>
     </>
   );
