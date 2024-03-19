@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import CategoryList from '@/components/CategoryList/CategoryList';
 import CommonButton from '@/components/common/Button/CommonButton/CommonButton';
 import AnswerStatusLabel from '@/components/common/Label/AnswerStatusLabel/AnswerStatusLabel';
@@ -21,8 +21,18 @@ interface AdminListPageProps {
 
 const AdminList = ({ params }: AdminListPageProps) => {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [adminListItems, setAdminListItems] = useState<adminListItem[]>([]);
   const [totalPages, setTotalPages] = useState(0);
+
+  const ListCategory = params.slug;
+
+  const pageQueryParam = searchParams.get('page');
+  const currentPage = pageQueryParam ? parseInt(pageQueryParam, 10) : 1;
+
+  const handlePageChange = (newPage: number) => {
+    router.push(`/admin/${ListCategory}?page=${newPage}`, { scroll: false });
+  };
 
   const handleListButtonClick = () => {
     router.push('/admin');
@@ -70,7 +80,11 @@ const AdminList = ({ params }: AdminListPageProps) => {
       <PageTitle>{params.slug.toUpperCase()}</PageTitle>
       <CategoryList />
       {renderAdminListItems()}
-      <PaginationButtons totalPages={totalPages} />
+      <PaginationButtons
+        totalPages={totalPages}
+        currentPage={currentPage}
+        handlePageChange={handlePageChange}
+      />
       <S.ButtonContainer>
         <CommonButton type="secondary" onClick={handleListButtonClick}>
           리스트
